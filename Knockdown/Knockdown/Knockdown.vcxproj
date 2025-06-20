@@ -123,10 +123,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameCore.cpp" />
     <ClCompile Include="Knockdown.cpp" />
+    <ClCompile Include="Mainmenu.cpp" />
+    <ClCompile Include="Member.cpp" />
     <ClCompile Include="Setting.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameCore.h" />
+    <ClInclude Include="Mainmenu.h" />
+    <ClInclude Include="Member.h" />
     <ClInclude Include="Setting.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

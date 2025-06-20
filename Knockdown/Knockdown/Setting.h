@@ -1,8 +1,24 @@
 #pragma once
+#include <iostream>
+#include <windows.h>
+#include <conio.h>
+#include <string>
+#include <cstdlib>
+
+#define UP 72
+#define DOWN 80
+#define SPACE 32
+
 class Setting
 {
-public:
+protected:
+	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE); // 커서 관련
+	CONSOLE_CURSOR_INFO cursorInfo;
 
+public:
+	void InitialSetup(); // 초기설정
+	void CursorP(int x, int y); // 메인화면 커서 위치 이동
+	void CursorH(); // 커서 숨기기
 
 };
 
