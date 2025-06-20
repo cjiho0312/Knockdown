@@ -1,11 +1,8 @@
 ﻿#include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <string>
-#include <cstdlib>
+
 #include "Setting.h"
 #include "Mainmenu.h"
-#include "GameCore.h"
+#include "GameSet.h"
 #include "Member.h"
 
 using namespace std;
@@ -19,10 +16,12 @@ int main()
     mainmenu.printmain();
 
     system("cls"); // 화면 clear
-    cout << "게임이 시작되었어요." << endl;
+
+    GameSet gameset;
+    gameset.RunGame();
     
-
-
+    gameset.EndingGame();
+    
 
     return 0;
 }
