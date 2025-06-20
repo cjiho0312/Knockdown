@@ -5,9 +5,6 @@
 #include <string>
 #include <cstdlib>
 
-#define UP 72
-#define DOWN 80
-#define SPACE 32
 
 class Setting
 {
