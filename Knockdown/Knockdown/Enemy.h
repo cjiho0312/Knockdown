@@ -2,8 +2,9 @@
 #include "Member.h"
 class Enemy : public Member
 {
-public:
+private:
 
+public:
 
 };
 

@@ -1,2 +1,4 @@
-﻿  Member.cpp
-  Knockdown.vcxproj -> C:\Users\Administrator\Desktop\Knockdown\Knockdown\x64\Debug\Knockdown.exe
+﻿  Player.cpp
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(9,41): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(34,40): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Knockdown.vcxproj -> C:\Users\Legion\Desktop\Knockdown\Knockdown\x64\Debug\Knockdown.exe

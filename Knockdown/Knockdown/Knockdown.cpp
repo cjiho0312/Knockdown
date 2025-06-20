@@ -1,5 +1,4 @@
 ﻿#include <iostream>
-
 #include "Setting.h"
 #include "Mainmenu.h"
 #include "GameSet.h"
@@ -16,6 +15,7 @@ int main()
     mainmenu.printmain();
 
     system("cls"); // 화면 clear
+    setting.CursorH(); // 커서 숨기기
 
     GameSet gameset;
     gameset.RunGame();

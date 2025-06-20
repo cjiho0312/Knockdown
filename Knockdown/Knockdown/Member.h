@@ -1,22 +1,26 @@
 #pragma once
 #include <iostream>
+#include <windows.h>
 using namespace std;
 
 class Member
 {
 protected:
 	
+	int hp; // 체력
+	bool isAlive; // 상태
+	
 
 public:
-	Member() : HP(20), isAlive(true) {} // 멤버 초기화 리스트 사용, HP는 20, isAlive true로 초기화.
+	Member() : hp(20), isAlive(true) {} // 멤버 초기화 리스트 사용, HP는 20, isAlive true로 초기화.
 	virtual ~Member() {} // 소멸자
 
-	int HP; // 체력
-	bool isAlive; // 상태
-	int DodgeCount; // 회피 횟수
+	int GetHP() const { return hp; }
+	bool IsAlive() const { return isAlive; }
+	
 
 	void Attack(Member& target);
-	void TakeDamage(int dmg);
+	virtual void TakeDamage(int dmg);
 
 };
 

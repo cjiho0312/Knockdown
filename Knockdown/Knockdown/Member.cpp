@@ -27,11 +27,11 @@ void Member::Attack(Member& target)
 
 void Member::TakeDamage(int dmg)
 {
-	HP -= dmg;
+	hp -= dmg;
 
-	if (HP <= 0)
+	if (hp <= 0)
 	{
-		HP = 0;
+		hp = 0;
 		cout << "ав╬З╫ю╢о╢ы!" << endl;
 		isAlive = false;
 	}

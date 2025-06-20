@@ -7,7 +7,7 @@ using namespace std;
 class GameSet : public Setting
 {
 private:
-	bool isGameRunning = TRUE;
+	bool isGameRunning = true;
 
 protected:
 	Player player;
