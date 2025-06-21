@@ -2,6 +2,7 @@
 #include "Setting.h"
 #include "Player.h"
 #include "Enemy.h"
+
 using namespace std;
 
 class GameSet : public Setting
@@ -10,8 +11,11 @@ private:
 	bool isGameRunning = true;
 
 protected:
+	Member member;
 	Player player;
 	Enemy enemy;
+
+	bool onceclear = true; // 추후삭제
 
 public :
 

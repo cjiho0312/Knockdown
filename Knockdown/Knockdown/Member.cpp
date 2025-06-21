@@ -1,38 +1,48 @@
 #include "Member.h"
 
 
-void Member::Attack(Member& target)
+void Member::PrepareAttack()
 {
-	int damage = 0; // 데미지 설정
-
-	int randValue = rand() % 100; // 0~99
-
-	if (randValue < 60) // 60% 확률로 1 데미지
+	if (!isPreparingAttack && !isDodging) // 중복 실행을 막기 위한 조건문, 회피 중이지 않을 때 실행 가능
 	{
-		damage = 1;
+		isPreparingAttack = true;
+		attackStartTime = GetTickCount64(); // 현재 시간 저장
+		cout << "(공격 준비 중)" << endl;
 	}
-	else if (randValue < 90) // 30% 확률로 2 데미지
-	{
-		damage = 2;
-	}
-	else // 10% 확률로 3 데미지
-	{
-		damage = 3;
-	}
-
-	cout << damage << "만큼 데미지를 입혔습니다." << endl;
-
-	target.TakeDamage(damage);
 }
 
-void Member::TakeDamage(int dmg)
+void Member::TryAttack(Member& target)
 {
-	hp -= dmg;
-
-	if (hp <= 0)
+	if (isPreparingAttack && GetTickCount64() - attackStartTime >= 700) // isPreparingAttack이 true이고, 0.7초가 지났는가?
 	{
-		hp = 0;
-		cout << "죽었습니다!" << endl;
-		isAlive = false;
+		cout << "(공격 실행)" << endl;
+		Attack(target); // 실제 공격 실행
+		isPreparingAttack = false; // 상태 초기화
 	}
+}
+
+void Member::CancelAttack()
+{
+	isPreparingAttack = false;
+}
+
+void Member::Attack(Member& target)
+{
+
+}
+
+void Member::TakeDamage(int dmg, const Member& Attacker)
+{
+
+}
+
+void Member::AAttack(Member& target)
+{
+	isAAttack = true;
+	
+	target.TakeDamage(3,*this); // 3 데미지
+
+	dodgeCount = 0; // 회피 카운트 초기화
+
+	isAAttack = false; // 강공격 종료
 }

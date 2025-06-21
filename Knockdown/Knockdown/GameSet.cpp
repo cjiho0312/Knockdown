@@ -23,6 +23,14 @@ void GameSet::InputKey() // 키 입력 처리
             }
             player.Dodge(); // 회피 실행
         }
+        else if (key == 'a')
+        {
+            if (!player.IsPreparingAttack() && !player.IsDodging() && player.DodgeCount() >= 3)
+                // 공격, 회피 중이지 않고, 회피 카운트가 3 이상일 경우
+            {
+                player.AAttack(enemy);
+            }
+        }
     }
 }
 
@@ -30,32 +38,49 @@ void GameSet::UpdateGame() // 게임 업데이트
 {
     if (!player.IsAlive() || !enemy.IsAlive()) // 플레이어와 적 둘 중 하나라도 살아있지 않다면
     {
-        isGameRunning = false; // 게임 종료
+        isGameRunning = false; // 게임 종료  
     }
+
+    player.TryAttack(enemy); // z키 입력 시 0.7초 후 공격 실행
+    player.EndDodge(); // x키 입력 시 0.5초 후 회피 종료, 회피 성공유무 확인
+    player.CheckRA(); // repeatAttack 상태 확인, 불러오기
+    enemy.CheckECA(); // EnemyCanAttack 상태 확인, 불러오기
+    
+    if (enemy.EnemyCanAttack() == true)
+    {
+        enemy.PrepareAttack(); // 적의 자동 공격 준비
+    }
+    enemy.TryAttack(player); // 공격 준비 된 상태면 실행
+    
 }
 
 void GameSet::RenderGame() // 게임 화면 표시
-{ 
-    CursorP(0, 0);
+{
+    if (enemy.GetHP() < 10 && onceclear) // 추후삭제
+    {
+        system("cls");
+        onceclear = false;
+    }
 
+    CursorP(0, 0);
     cout << "========== KNOCKDOWN ==========\n";
-    cout << "[Player HP]: " << player.GetHP() << " | [Dodge]: " << player.GetDodgeCount() << "\n";
+    cout << "[Player HP]: " << player.GetHP() << " | [Dodge]: " << player.DodgeCount() << "\n";
     cout << "[Enemy  HP]: " << enemy.GetHP() << "\n";
     cout << "================================\n\n";
     cout << "Z: 공격   X: 회피\n";
+
+    
 }
 
 void GameSet::RunGame() // 게임 메인 루프
 {
     while (isGameRunning == TRUE)
     {
-        UpdateGame();
         RenderGame();
         InputKey();
+        UpdateGame();
 
-        player.TryAttack(enemy); // z키 입력 시 0.7초 후 공격 실행
-        player.EndDodge(); // x키 입력 시 0.5초 후 회피 종료, 회피 성공유무 확인
-
+        
         Sleep(30); // 루프 속도 제한. 화면 깜빡임 보완용 짧은 지연
     }
 
