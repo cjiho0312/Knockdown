@@ -1,8 +1,14 @@
 #include "Enemy.h"
 
+void Enemy::FirstAttack() // 일정 시간 후 적이 공격 가능하도록 설정
+{
+	lastAttackTime = GetTickCount64(); 
+	nextAttackDelay = (rand() % 2001) + 2000; 
+}
+
 void Enemy::PrepareAttack()
 {
-	if (!isPreparingAttack && !isDodging) // 중복 실행을 막기 위한 조건문, 회피 중이지 않을 때 실행 가능
+	if (!isPreparingAttack) // 중복 실행을 막기 위한 조건문
 	{
 		enemyCanAttack = false;
 		isPreparingAttack = true;
@@ -13,6 +19,8 @@ void Enemy::PrepareAttack()
 
 void Enemy::TryAttack(Member& player)
 {
+	if (!isPreparingAttack) return;
+
 	if (isPreparingAttack && GetTickCount64() - attackStartTime >= 700) // isPreparingAttack이 true이고, 0.7초가 지났는가?
 	{
 		cout << "                                        (공격 실행)" << endl;
@@ -68,7 +76,8 @@ void Enemy::TakeDamage(int dmg, const Member & Attacker)
 {
 	if (isPreparingAttack) // 공격 준비 상태 중 데미지를 입었을 때
 	{
-		CancelAttack();
+		isPreparingAttack = false;
+		cout << "                                        적의 공격이 중단되었습니다!" << endl;
 		lastAttackTime = GetTickCount64(); // lastAttackTime을 이용해 적정시간 후 다시 공격 준비하도록 설정
 	}
 	
