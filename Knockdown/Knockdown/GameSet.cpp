@@ -12,8 +12,6 @@ void GameSet::InputKey() // 키 입력 처리
             {
                 player.PrepareAttack(); // 공격 준비 동작 시작
             }
-            
-            
         }
         else if (key == 'x') // x 누르면
         {
@@ -55,6 +53,7 @@ void GameSet::UpdateGame() // 게임 업데이트
     player.CheckRA(); // repeatAttack 상태 확인, 불러오기
     enemy.CheckECA(); // EnemyCanAttack 상태 확인, 불러오기
     
+    
     if (enemy.EnemyCanAttack() == true)
     {
         enemy.PrepareAttack(); // 적의 자동 공격 준비
@@ -66,8 +65,17 @@ void GameSet::UpdateGame() // 게임 업데이트
 
 void GameSet::RenderGame() // 게임 화면 표시
 {
-    timeleft = (TIMER - (GetTickCount64() - gameStartTime)) / 1000 ;
 
+    ResetCursor(); // 매 루프마다 커서 리셋, 기존 그래픽 지우기 함수
+    HpAndTimer(); // 화면 상단에 각 멤버의 HP 바, 강공격 바, 타이머 출력
+    PlayerPrint(); // 플레이어 상태에 따라 그래픽 표시
+    EnemyPrint(); // 적 상태에 따라 그래픽 표시
+    GameText(); // 안내 텍스트 (데미지, 회피, 명중률 저하 등)
+    HowToPlay(); // 게임 방법 설명 및 키 안내
+
+
+
+    /*
     if (enemy.GetHP() < 10 && onceclear) // 추후삭제. 남은 뎀지가 안 보여서.. 디버깅용
     {
         system("cls");
@@ -80,7 +88,7 @@ void GameSet::RenderGame() // 게임 화면 표시
     cout << "[Enemy  HP]: " << enemy.GetHP() << "\n";
     cout << "================================\n\n";
     cout << "Z: 공격   X: 회피\n";
-
+    */
     
 }
 
@@ -123,4 +131,60 @@ void GameSet::ResultGame() // 게임 결과값
     {
         Result = 0; // 비기면 0
     }
+}
+
+void GameSet::ResetCursor()
+{
+    CursorP(0, 0); // 커서 초기화
+}
+
+void GameSet::HpAndTimer()
+{
+    timeleft = (TIMER - (GetTickCount64() - gameStartTime)) / 1000; // 타이머 출력용
+
+    cout << "                                                                         " << endl;
+    cout << "          PLAYER HP : " << player.GetHP();
+}
+
+void GameSet::PlayerPrint()
+{
+    /*
+    switch (//player의 상태)
+    {
+    case 0 : // IDLE 상태
+        cout << "\n\n\n\n\n\n           대기 중입니다...";
+        break;
+    case 1 : // 공격 준비 상태
+        cout << "\n\n\n\n\n\n           공격 준비 상태입니다...";
+        break;
+    case 2 : // 공격 상태
+        cout << "\n\n\n\n\n\n           공격 상태입니다...";
+        break;
+    case 3 : // 피격 상태
+        cout << "\n\n\n\n\n\n           피격 상태입니다...";
+        break;
+    case 4 : // 회피 상태
+        cout << "\n\n\n\n\n\n           회피 중입니다...";
+        break;
+    case 5 : // 강공격 상태
+        cout << "\n\n\n\n\n\n           강공격 중입니다...";
+        break;
+    case 6 : // 쓰러짐 상태
+        cout << "\n\n\n\n\n\n           쓰려지는 중입니다...";
+        break;
+    }
+    */
+    
+}
+
+void GameSet::EnemyPrint()
+{
+}
+
+void GameSet::GameText()
+{
+}
+
+void GameSet::HowToPlay()
+{
 }

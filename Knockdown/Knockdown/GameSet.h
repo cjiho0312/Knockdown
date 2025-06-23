@@ -28,5 +28,14 @@ public :
 	void RenderGame(); // 게임 화면 표시
 	void RunGame(); // 게임 메인 루프
 	void ResultGame(); // 게임 결과 평가
+
+	// 출력 처리용 함수 모음
+	void ResetCursor(); // 매 루프마다 커서 리셋, 기존 그래픽 지우기 함수
+	void HpAndTimer(); // 화면 상단에 각 멤버의 HP 바, 강공격 바, 타이머 출력
+	void PlayerPrint(); // 플레이어 상태에 따라 그래픽 표시
+	void EnemyPrint(); // 적 상태에 따라 그래픽 표시
+	void GameText(); // 안내 텍스트 (데미지, 회피, 명중률 저하 등)
+	void HowToPlay(); // 게임 방법 설명 및 키 안내
+
 };
 

@@ -19,6 +19,20 @@ protected:
 	int repeatAttack = 0; // 연속 공격 횟수
 	int dodgeCount = 0; // 회피 횟수
 
+
+	typedef enum _STATE // 상태 출력용
+	{
+		IDLE, // 기본 대기 상태, 0
+		R_ATTACK, // 공격 준비 동작 상태, 1
+		ATTACK, // 공격 상태, 2
+		GETDAMAGE, // 피격 상태, 3
+		DODGE, // 회피 상태, 4
+		A_ATTACK, // 강공격 상태, 5
+		KO // 쓰러짐 상태, 6
+	} STATE;
+
+
+
 public:
 
 	Member() : hp(20), isAlive(true) {} // 멤버 초기화 리스트 사용, HP는 20, isAlive true로 초기화.
@@ -47,6 +61,7 @@ public:
 	void ResetDodge() { dodgeCount = 0; } // 회피 횟수 초기화
 	void IncreaseDodge() { dodgeCount++; } // 회피 횟수 증가
 	int DodgeCount() const { return dodgeCount; }
+
 
 };
 

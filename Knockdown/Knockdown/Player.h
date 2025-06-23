@@ -7,6 +7,8 @@ class Player : public Member
 private :
 	DWORD dodgeStartTime = 0; // 회피 시작 시간 기록
 	DWORD AttackTime = 0; // 회피 시작 시간 기록
+
+	STATE PLAYER = IDLE; // 플레이어 상태 선언
 	
 public:
 	void Attack(Member& enemy);
@@ -19,6 +21,6 @@ public:
 	void EndDodge(); // 회피 끝
 
 	void TakeDamage(int dmg, const Member& Attacker) override;
-
+ 
 };
 

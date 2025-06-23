@@ -47,6 +47,8 @@ void Player::Dodge()
         isDodging = true;
         dodgeStartTime = GetTickCount64();
 	    cout << "(회피 중)" << endl;
+
+        STATE PLAYER = DODGE; // 회피 동작
     }
 }
 
@@ -56,6 +58,8 @@ void Player::EndDodge()
     {
         cout << "(회피 종료)" << endl;
         isDodging = false;
+
+        STATE PLAYER = IDLE; // 회피 종료 후 아이들 동작
     }
 }
 
@@ -70,13 +74,19 @@ void Player::TakeDamage(int dmg, const Member& Attacker)
 
     hp -= dmg;
 
+    STATE PLAYER = GETDAMAGE; // 데미지 받는 동작
+
     if (hp <= 0)
     {
         hp = 0;
         cout << "죽었습니다!" << endl;
+
+        STATE PLAYER = KO; // 쓰러짐 동작
+
         isAlive = false;
     }
 }
+
 
 
 

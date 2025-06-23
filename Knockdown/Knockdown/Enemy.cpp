@@ -14,6 +14,8 @@ void Enemy::PrepareAttack()
 		isPreparingAttack = true;
 		attackStartTime = GetTickCount64(); // 현재 시간 저장
 		cout << "                                        (공격 준비 중)" << endl;
+
+		STATE ENEMY = R_ATTACK; // 공격 준비 동작
 	}
 }
 
@@ -37,6 +39,8 @@ void Enemy::TryAttack(Member& player)
 		isPreparingAttack = false; // 상태 초기화
 		lastAttackTime = GetTickCount64(); // 마지막 공격 시간에 현재 시간 저장
 		nextAttackDelay = (rand() % 2001) + 2000; // 2 ~ 5초가량 공격 딜레이를 줌
+
+		STATE ENEMY = ATTACK; // 공격 동작
 	}
 }
 
@@ -86,6 +90,8 @@ void Enemy::TakeDamage(int dmg, const Member & Attacker)
 	if (Attacker.IsAAttack()) // 강공격을 맞았을 때
 	{	
 		hp -= dmg;
+
+		STATE ENEMY = GETDAMAGE; // 피격 동작
 		
 		if (hp <= 0)
 		{
@@ -110,18 +116,26 @@ void Enemy::TakeDamage(int dmg, const Member & Attacker)
 		}
 
 		int dodgePercent = rand() % 100;
-		if (dodgePercent < dodgeChance) // 회피
+
+		if (dodgePercent < dodgeChance) // 회피 확률이 (100)랜덤값보다 클 경우 회피
 		{
 			cout << "\n적이 공격을 회피했습니다..." << endl;
+
+			STATE ENEMY = DODGE; // 피격 동작
 		}
-		else if (dodgePercent >= dodgeChance) // 데미지
+		else if (dodgePercent >= dodgeChance) // 회피 확률이 (100)랜덤값보다 작거나 같을 경우 피격
 		{
 			hp -= dmg;
+
+			STATE ENEMY = GETDAMAGE; // 피격 동작
 		
 			if (hp <= 0)
 			{
 				hp = 0;
 				cout << "상대가 죽었습니다!" << endl;
+
+				STATE ENEMY = KO; // 쓰러짐 동작
+
 				isAlive = false;
 			}
 		}
