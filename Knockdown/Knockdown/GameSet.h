@@ -37,5 +37,7 @@ public :
 	void GameText(); // 안내 텍스트 (데미지, 회피, 명중률 저하 등)
 	void HowToPlay(); // 게임 방법 설명 및 키 안내
 
+	void HpBarMaker(int hp); // HP 숫자에 따른 BAR 표시
+
 };
 

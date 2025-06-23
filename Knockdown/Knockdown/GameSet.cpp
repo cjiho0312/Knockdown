@@ -1,6 +1,6 @@
-#include "GameSet.h"
+ï»¿#include "GameSet.h"
 
-void GameSet::InputKey() // Å° ÀÔ·Â Ã³¸®
+void GameSet::InputKey() // í‚¤ ì…ë ¥ ì²˜ë¦¬
 {
     if (_kbhit())
     {
@@ -8,23 +8,23 @@ void GameSet::InputKey() // Å° ÀÔ·Â Ã³¸®
 
         if (key == 'z')
         {
-            if (!player.IsPreparingAttack()) // °ø°İ ÁØºñµ¿ÀÛÀÌ ¾Æ´Ò ¶§ ÇÃ·¹ÀÌ¾î°¡ z¸¦ ´©¸£¸é
+            if (!player.IsPreparingAttack()) // ê³µê²© ì¤€ë¹„ë™ì‘ì´ ì•„ë‹ ë•Œ í”Œë ˆì´ì–´ê°€ zë¥¼ ëˆ„ë¥´ë©´
             {
-                player.PrepareAttack(); // °ø°İ ÁØºñ µ¿ÀÛ ½ÃÀÛ
+                player.PrepareAttack(); // ê³µê²© ì¤€ë¹„ ë™ì‘ ì‹œì‘
             }
         }
-        else if (key == 'x') // x ´©¸£¸é
+        else if (key == 'x') // x ëˆ„ë¥´ë©´
         {
-            if (player.IsPreparingAttack()) // °ø°İ ÁßÀÏ ¶§´Â
+            if (player.IsPreparingAttack()) // ê³µê²© ì¤‘ì¼ ë•ŒëŠ”
             {
-                player.CancelAttack(); // °ø°İ Áß´Ü ÈÄ
+                player.CancelAttack(); // ê³µê²© ì¤‘ë‹¨ í›„
             }
-            player.Dodge(); // È¸ÇÇ ½ÇÇà
+            player.Dodge(); // íšŒí”¼ ì‹¤í–‰
         }
         else if (key == 'a')
         {
             if (!player.IsPreparingAttack() && !player.IsDodging() && player.DodgeCount() >= 3)
-                // °ø°İ, È¸ÇÇ ÁßÀÌÁö ¾Ê°í, È¸ÇÇ Ä«¿îÆ®°¡ 3 ÀÌ»óÀÏ °æ¿ì
+                // ê³µê²©, íšŒí”¼ ì¤‘ì´ì§€ ì•Šê³ , íšŒí”¼ ì¹´ìš´íŠ¸ê°€ 3 ì´ìƒì¼ ê²½ìš°
             {
                 player.AAttack(enemy);
             }
@@ -32,51 +32,51 @@ void GameSet::InputKey() // Å° ÀÔ·Â Ã³¸®
     }
 }
 
-void GameSet::UpdateGame() // °ÔÀÓ ¾÷µ¥ÀÌÆ®
+void GameSet::UpdateGame() // ê²Œì„ ì—…ë°ì´íŠ¸
 {
-    if (!player.IsAlive() || !enemy.IsAlive()) // ÇÃ·¹ÀÌ¾î¿Í Àû µÑ Áß ÇÏ³ª¶óµµ »ì¾ÆÀÖÁö ¾Ê´Ù¸é
+    if (!player.IsAlive() || !enemy.IsAlive()) // í”Œë ˆì´ì–´ì™€ ì  ë‘˜ ì¤‘ í•˜ë‚˜ë¼ë„ ì‚´ì•„ìˆì§€ ì•Šë‹¤ë©´
     {
-        isGameRunning = false; // °ÔÀÓ Á¾·á 
+        isGameRunning = false; // ê²Œì„ ì¢…ë£Œ 
         return;
     }
 
-    if (!isBattleStart) return; // GO! ÀüÀÌ¸é ¾Æ¹« °Íµµ ÇÏÁö ¾ÊÀ½
+    if (!isBattleStart) return; // GO! ì „ì´ë©´ ì•„ë¬´ ê²ƒë„ í•˜ì§€ ì•ŠìŒ
 
-    if (GetTickCount64() - gameStartTime >= TIMER) // Å¸ÀÌ¸Ó ³¡³ª¸é °ÔÀÓ Á¾·á
+    if (GetTickCount64() - gameStartTime >= TIMER) // íƒ€ì´ë¨¸ ëë‚˜ë©´ ê²Œì„ ì¢…ë£Œ
     {
         cout << "TIME OVER" << endl;
         isGameRunning = false;
         return;
     }
 
-    player.EndDodge(); // xÅ° ÀÔ·Â ½Ã 0.5ÃÊ ÈÄ È¸ÇÇ Á¾·á, È¸ÇÇ ¼º°øÀ¯¹« È®ÀÎ
-    player.CheckRA(); // repeatAttack »óÅÂ È®ÀÎ, ºÒ·¯¿À±â
-    enemy.CheckECA(); // EnemyCanAttack »óÅÂ È®ÀÎ, ºÒ·¯¿À±â
+    player.EndDodge(); // xí‚¤ ì…ë ¥ ì‹œ 0.5ì´ˆ í›„ íšŒí”¼ ì¢…ë£Œ, íšŒí”¼ ì„±ê³µìœ ë¬´ í™•ì¸
+    player.CheckRA(); // repeatAttack ìƒíƒœ í™•ì¸, ë¶ˆëŸ¬ì˜¤ê¸°
+    enemy.CheckECA(); // EnemyCanAttack ìƒíƒœ í™•ì¸, ë¶ˆëŸ¬ì˜¤ê¸°
     
     
     if (enemy.EnemyCanAttack() == true)
     {
-        enemy.PrepareAttack(); // ÀûÀÇ ÀÚµ¿ °ø°İ ÁØºñ
+        enemy.PrepareAttack(); // ì ì˜ ìë™ ê³µê²© ì¤€ë¹„
     }
-    enemy.TryAttack(player); // °ø°İ ÁØºñ µÈ »óÅÂ¸é ½ÇÇà
+    enemy.TryAttack(player); // ê³µê²© ì¤€ë¹„ ëœ ìƒíƒœë©´ ì‹¤í–‰
     
-    player.TryAttack(enemy); // zÅ° ÀÔ·Â ½Ã 0.7ÃÊ ÈÄ °ø°İ ½ÇÇà
+    player.TryAttack(enemy); // zí‚¤ ì…ë ¥ ì‹œ 0.7ì´ˆ í›„ ê³µê²© ì‹¤í–‰
 }
 
-void GameSet::RenderGame() // °ÔÀÓ È­¸é Ç¥½Ã
+void GameSet::RenderGame() // ê²Œì„ í™”ë©´ í‘œì‹œ
 {
 
-    ResetCursor(); // ¸Å ·çÇÁ¸¶´Ù Ä¿¼­ ¸®¼Â, ±âÁ¸ ±×·¡ÇÈ Áö¿ì±â ÇÔ¼ö
-    HpAndTimer(); // È­¸é »ó´Ü¿¡ °¢ ¸â¹öÀÇ HP ¹Ù, °­°ø°İ ¹Ù, Å¸ÀÌ¸Ó Ãâ·Â
-    PlayerPrint(); // ÇÃ·¹ÀÌ¾î »óÅÂ¿¡ µû¶ó ±×·¡ÇÈ Ç¥½Ã
-    EnemyPrint(); // Àû »óÅÂ¿¡ µû¶ó ±×·¡ÇÈ Ç¥½Ã
-    GameText(); // ¾È³» ÅØ½ºÆ® (µ¥¹ÌÁö, È¸ÇÇ, ¸íÁß·ü ÀúÇÏ µî)
-    HowToPlay(); // °ÔÀÓ ¹æ¹ı ¼³¸í ¹× Å° ¾È³»
+    ResetCursor(); // ë§¤ ë£¨í”„ë§ˆë‹¤ ì»¤ì„œ ë¦¬ì…‹, ê¸°ì¡´ ê·¸ë˜í”½ ì§€ìš°ê¸° í•¨ìˆ˜
+    HpAndTimer(); // í™”ë©´ ìƒë‹¨ì— ê° ë©¤ë²„ì˜ HP ë°”, ê°•ê³µê²© ë°”, íƒ€ì´ë¨¸ ì¶œë ¥
+    PlayerPrint(); // í”Œë ˆì´ì–´ ìƒíƒœì— ë”°ë¼ ê·¸ë˜í”½ í‘œì‹œ
+    EnemyPrint(); // ì  ìƒíƒœì— ë”°ë¼ ê·¸ë˜í”½ í‘œì‹œ
+    GameText(); // ì•ˆë‚´ í…ìŠ¤íŠ¸ (ë°ë¯¸ì§€, íšŒí”¼, ëª…ì¤‘ë¥  ì €í•˜ ë“±)
+    HowToPlay(); // ê²Œì„ ë°©ë²• ì„¤ëª… ë° í‚¤ ì•ˆë‚´
 
 
 
     /*
-    if (enemy.GetHP() < 10 && onceclear) // ÃßÈÄ»èÁ¦. ³²Àº µ©Áö°¡ ¾È º¸¿©¼­.. µğ¹ö±ë¿ë
+    if (enemy.GetHP() < 10 && onceclear) // ì¶”í›„ì‚­ì œ. ë‚¨ì€ ë€ì§€ê°€ ì•ˆ ë³´ì—¬ì„œ.. ë””ë²„ê¹…ìš©
     {
         system("cls");
         onceclear = false;
@@ -87,12 +87,12 @@ void GameSet::RenderGame() // °ÔÀÓ È­¸é Ç¥½Ã
     cout << "\n[Player HP]: " << player.GetHP() << " | [Dodge]: " << player.DodgeCount() << "\n";
     cout << "[Enemy  HP]: " << enemy.GetHP() << "\n";
     cout << "================================\n\n";
-    cout << "Z: °ø°İ   X: È¸ÇÇ\n";
+    cout << "Z: ê³µê²©   X: íšŒí”¼\n";
     */
     
 }
 
-void GameSet::RunGame() // °ÔÀÓ ¸ŞÀÎ ·çÇÁ
+void GameSet::RunGame() // ê²Œì„ ë©”ì¸ ë£¨í”„
 {
     cout << "3" << endl;
     Sleep(1000);
@@ -102,89 +102,179 @@ void GameSet::RunGame() // °ÔÀÓ ¸ŞÀÎ ·çÇÁ
     Sleep(1000);
     cout << "GO!" << endl;
     Sleep(1000);
-    
-    isBattleStart = true;
-    gameStartTime = GetTickCount64(); // °ÔÀÓ ½ÃÀÛ ½Ã°£ ÀúÀå
-    enemy.FirstAttack(); // ÀûÀÇ Ã¹ °ø°İ Á¦¾î (½ÃÀÛÇÏÀÚ¸¶ÀÚ °ø°İÇÒ ¼ö ¾øµµ·Ï)
 
-    while (isGameRunning == TRUE) // °ÔÀÓ ·çÇÁ
+    system("cls"); // í™”ë©´ clear
+
+    isBattleStart = true;
+    gameStartTime = GetTickCount64(); // ê²Œì„ ì‹œì‘ ì‹œê°„ ì €ì¥
+    enemy.FirstAttack(); // ì ì˜ ì²« ê³µê²© ì œì–´ (ì‹œì‘í•˜ìë§ˆì ê³µê²©í•  ìˆ˜ ì—†ë„ë¡)
+
+    while (isGameRunning == TRUE) // ê²Œì„ ë£¨í”„
     {
         RenderGame();
         InputKey();
         UpdateGame();
 
-        Sleep(30); // ·çÇÁ ¼Óµµ Á¦ÇÑ. È­¸é ±ôºıÀÓ º¸¿Ï¿ë ÂªÀº Áö¿¬
+        Sleep(30); // ë£¨í”„ ì†ë„ ì œí•œ. í™”ë©´ ê¹œë¹¡ì„ ë³´ì™„ìš© ì§§ì€ ì§€ì—°
     }
 }
 
-void GameSet::ResultGame() // °ÔÀÓ °á°ú°ª
+void GameSet::ResultGame() // ê²Œì„ ê²°ê³¼ê°’
 {
     if (player.GetHP() > enemy.GetHP())
     {
-        Result = 2; // ÀÌ±â¸é 2
+        Result = 2; // ì´ê¸°ë©´ 2
     }
     else if (player.GetHP() < enemy.GetHP())
     {
-        Result = 1; // Áö¸é 1
+        Result = 1; // ì§€ë©´ 1
     }
     else
     {
-        Result = 0; // ºñ±â¸é 0
+        Result = 0; // ë¹„ê¸°ë©´ 0
     }
 }
 
 void GameSet::ResetCursor()
 {
-    CursorP(0, 0); // Ä¿¼­ ÃÊ±âÈ­
+    CursorP(0, 0); // ì»¤ì„œ ì´ˆê¸°í™”
+    // ì°½í¬ê¸° ì°¸ê³  : 120 / 40
 }
 
 void GameSet::HpAndTimer()
 {
-    timeleft = (TIMER - (GetTickCount64() - gameStartTime)) / 1000; // Å¸ÀÌ¸Ó Ãâ·Â¿ë
+    timeleft = (TIMER - (GetTickCount64() - gameStartTime)) / 1000; // íƒ€ì´ë¨¸ ì¶œë ¥ìš©
 
-    cout << "                                                                         " << endl;
-    cout << "          PLAYER HP : " << player.GetHP();
+    CursorP(57, 1); // 'íƒ€ì´ë¨¸'
+    cout << "TIMER";
+
+    CursorP(2, 2); // í”Œë ˆì´ì–´ HP
+    cout << "PLAYER [                                                                                ";
+    CursorP(10, 2);
+    HpBarMaker(player.GetHP());
+    CursorP(50, 2);
+    cout << "]";
+
+    CursorP(7, 4); // í”Œë ˆì´ì–´ (ê°•ê³µê²©) ìŠ¤í…Œë¯¸ë„ˆ \u25CF, \u25CB
+    cout << "SPECIAL [\u25CB\u25CB\u25CB";
+    CursorP(16, 4);
+    for (int i = 0; i < player.DodgeCount(); i++)
+    {
+        cout << "\u25CF";
+    }
+    CursorP(22, 4);
+    cout << "]";
+    
+
+    CursorP(69, 2); // ì  HP
+    cout << "[                                                                                     ";
+    CursorP(70, 2);
+    HpBarMaker(enemy.GetHP());
+    CursorP(110, 2);
+    cout << "] ENEMY";
+
+    CursorP(2, 5);
+    cout << "-------------------------------------------------------------------------------------------------------------------";
+
+    CursorP(58, 2); // íƒ€ì´ë¨¸ ì¶œë ¥
+    cout << "<";
+    if (timeleft >= 10)
+    {
+    cout << timeleft;
+    }
+    else if (timeleft < 10)
+    {
+    cout << " " << timeleft;
+    }
+    cout << ">";
 }
 
 void GameSet::PlayerPrint()
 {
-    /*
-    switch (//playerÀÇ »óÅÂ)
+   
+    switch (player.GetPlayerState())
     {
-    case 0 : // IDLE »óÅÂ
-        cout << "\n\n\n\n\n\n           ´ë±â ÁßÀÔ´Ï´Ù...";
+    case 0 : // IDLE ìƒíƒœ
+        cout << "\n\n\n\n\n\n\n\n\n\n           ëŒ€ê¸° ì¤‘ì…ë‹ˆë‹¤...";
         break;
-    case 1 : // °ø°İ ÁØºñ »óÅÂ
-        cout << "\n\n\n\n\n\n           °ø°İ ÁØºñ »óÅÂÀÔ´Ï´Ù...";
+    case 1 : // ê³µê²© ì¤€ë¹„ ìƒíƒœ
+        cout << "\n\n\n\n\n\n\n\n\n\n           ê³µê²© ì¤€ë¹„ ìƒíƒœì…ë‹ˆë‹¤...";
         break;
-    case 2 : // °ø°İ »óÅÂ
-        cout << "\n\n\n\n\n\n           °ø°İ »óÅÂÀÔ´Ï´Ù...";
+    case 2 : // ê³µê²© ìƒíƒœ
+        cout << "\n\n\n\n\n\n\n\n\n\n           ê³µê²© ìƒíƒœì…ë‹ˆë‹¤...";
         break;
-    case 3 : // ÇÇ°İ »óÅÂ
-        cout << "\n\n\n\n\n\n           ÇÇ°İ »óÅÂÀÔ´Ï´Ù...";
+    case 3 : // í”¼ê²© ìƒíƒœ
+        cout << "\n\n\n\n\n\n\n\n\n\n           í”¼ê²© ìƒíƒœì…ë‹ˆë‹¤...";
         break;
-    case 4 : // È¸ÇÇ »óÅÂ
-        cout << "\n\n\n\n\n\n           È¸ÇÇ ÁßÀÔ´Ï´Ù...";
+    case 4 : // íšŒí”¼ ìƒíƒœ
+        cout << "\n\n\n\n\n\n\n\n\n\n           íšŒí”¼ ì¤‘ì…ë‹ˆë‹¤...";
         break;
-    case 5 : // °­°ø°İ »óÅÂ
-        cout << "\n\n\n\n\n\n           °­°ø°İ ÁßÀÔ´Ï´Ù...";
+    case 5 : // ê°•ê³µê²© ìƒíƒœ
+        cout << "\n\n\n\n\n\n\n\n\n\n           ê°•ê³µê²© ì¤‘ì…ë‹ˆë‹¤...";
         break;
-    case 6 : // ¾²·¯Áü »óÅÂ
-        cout << "\n\n\n\n\n\n           ¾²·ÁÁö´Â ÁßÀÔ´Ï´Ù...";
+    case 6 : // ì“°ëŸ¬ì§ ìƒíƒœ
+        cout << "\n\n\n\n\n\n\n\n\n\n           ì“°ë ¤ì§€ëŠ” ì¤‘ì…ë‹ˆë‹¤...";
         break;
     }
-    */
+   
+    
     
 }
 
 void GameSet::EnemyPrint()
 {
+    switch (enemy.GetEnemyState())
+    {
+    case 0: // IDLE ìƒíƒœ
+        cout << "                                        ëŒ€ê¸° ì¤‘ì…ë‹ˆë‹¤...";
+        break;
+    case 1: // ê³µê²© ì¤€ë¹„ ìƒíƒœ
+        cout << "                                        ê³µê²© ì¤€ë¹„ ìƒíƒœì…ë‹ˆë‹¤...";
+        break;
+    case 2: // ê³µê²© ìƒíƒœ
+        cout << "                                        ê³µê²© ìƒíƒœì…ë‹ˆë‹¤...";
+        break;
+    case 3: // í”¼ê²© ìƒíƒœ
+        cout << "                                        í”¼ê²© ìƒíƒœì…ë‹ˆë‹¤...";
+        break;
+    case 4: // íšŒí”¼ ìƒíƒœ
+        cout << "                                        íšŒí”¼ ì¤‘ì…ë‹ˆë‹¤...";
+        break;
+    case 6: // ì“°ëŸ¬ì§ ìƒíƒœ
+        cout << "                                        ì“°ë ¤ì§€ëŠ” ì¤‘ì…ë‹ˆë‹¤...";
+        break;
+    }
 }
 
 void GameSet::GameText()
 {
+    //í”Œë ˆì´ì–´ ê´€ë ¨ text
+    if (player.GetPlayerState() == 3) // í”¼ê²© ìƒíƒœì¼ ë•Œ
+    {
+        CursorP(50, 6);
+        cout << player.Damage();
+    }
+     
+     
+     
+    //ì  ê´€ë ¨ text
+    if (enemy.GetEnemyState() == 3) // í”¼ê²© ìƒíƒœì¼ ë•Œ
+    {
+        CursorP(70, 6);
+        cout << enemy.Damage();
+    }
+
+
 }
 
 void GameSet::HowToPlay()
 {
+}
+
+void GameSet::HpBarMaker(int hp)
+{
+    for (int i = 0; i < hp; i++)
+    {
+        cout << "\u25A0"; //\u25A0
+    }
 }

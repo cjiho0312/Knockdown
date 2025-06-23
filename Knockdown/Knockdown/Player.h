@@ -8,10 +8,15 @@ private :
 	DWORD dodgeStartTime = 0; // 회피 시작 시간 기록
 	DWORD AttackTime = 0; // 회피 시작 시간 기록
 
-	STATE PLAYER = IDLE; // 플레이어 상태 선언
+	STATE PLAYER; // 플레이어 상태 선언
 	
 public:
+	STATE GetPlayerState() const { return PLAYER; } // Player의 상태 반환
+	
+	void PrepareAttack() override; // 공격 준비
+	void TryAttack(Member& enemy) override; // 공격 시도
 	void Attack(Member& enemy);
+	void AAttack(Member& target) override;
 
 	bool IsDodging() const { return isDodging; }
 

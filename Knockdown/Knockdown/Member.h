@@ -9,6 +9,7 @@ protected:
 	
 	int hp; // 체력
 	bool isAlive; // 상태
+	int damage; // 데미지 
 	
 	bool isPreparingAttack = false; // 공격 준비 상태인지 알려줌
 	DWORD attackStartTime = 0; // 공격 시작 시간 기록
@@ -31,7 +32,7 @@ protected:
 		KO // 쓰러짐 상태, 6
 	} STATE;
 
-
+	STATE _state;
 
 public:
 
@@ -40,6 +41,7 @@ public:
 
 	int GetHP() const { return hp; }
 	bool IsAlive() const { return isAlive; }
+	int Damage() const { return damage; }
 	
 	bool IsPreparingAttack() const { return isPreparingAttack; }
 
@@ -56,7 +58,7 @@ public:
 	virtual void Attack(Member& target); // 공격
 	virtual void TakeDamage(int dmg, const Member& Attacker); // 데미지 받기
 
-	void AAttack(Member& target); // 강공격
+	virtual void AAttack(Member& target); // 강공격
 
 	void ResetDodge() { dodgeCount = 0; } // 회피 횟수 초기화
 	void IncreaseDodge() { dodgeCount++; } // 회피 횟수 증가

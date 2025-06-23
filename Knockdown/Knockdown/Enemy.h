@@ -10,7 +10,11 @@ private:
 	bool isPreparingAttack = false; // 공격이 준비되었는가?
 	bool enemyCanAttack = false; // 공격 가능한가?
 
+	STATE ENEMY; // 적 상태 선언
+
 public:
+	STATE GetEnemyState() const { return ENEMY; } // Enemy의 상태 반환
+
 	void FirstAttack(); // 첫 공격 설정
 	
 	void PrepareAttack() override; // 적 공격 준비
