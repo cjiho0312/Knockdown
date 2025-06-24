@@ -1,42 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\",
+  "WorkspaceRootPath": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Member.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\GameSet.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\GameSet.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Knockdown.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Knockdown.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Member.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Knockdown.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Knockdown.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Player.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Member.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Enemy.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6B096D23-9D10-4B0A-83BD-BD720988F04D}|Knockdown\\Knockdown.vcxproj|solutionrelative:Knockdown\\Enemy.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,79 +46,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "Knockdown.cpp",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Knockdown.cpp",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Knockdown.cpp",
               "RelativeDocumentMoniker": "Knockdown\\Knockdown.cpp",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Knockdown.cpp",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Knockdown.cpp",
               "RelativeToolTip": "Knockdown\\Knockdown.cpp",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-19T04:06:48.659Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "GameSet.h",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.h",
-              "RelativeDocumentMoniker": "Knockdown\\GameSet.h",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.h",
-              "RelativeToolTip": "Knockdown\\GameSet.h",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAABsAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-06-20T10:22:56.213Z",
+              "WhenOpened": "2025-06-19T04:06:48.659Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
+              "Title": "GameSet.h",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.h",
+              "RelativeDocumentMoniker": "Knockdown\\GameSet.h",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.h",
+              "RelativeToolTip": "Knockdown\\GameSet.h",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAACUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-06-20T10:22:56.213Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "GameSet.cpp",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.cpp",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.cpp",
               "RelativeDocumentMoniker": "Knockdown\\GameSet.cpp",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.cpp",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\GameSet.cpp",
               "RelativeToolTip": "Knockdown\\GameSet.cpp",
-              "ViewState": "AgIAAEYBAAAAAAAAAAAAAFgBAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAGgBAAAAAAAAAAAAAHwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T10:22:55.071Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "Member.h",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.h",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.h",
               "RelativeDocumentMoniker": "Knockdown\\Member.h",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.h",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.h",
               "RelativeToolTip": "Knockdown\\Member.h",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAmwEEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-20T10:11:30.586Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Member.cpp",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.cpp",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.cpp",
               "RelativeDocumentMoniker": "Knockdown\\Member.cpp",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.cpp",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Member.cpp",
               "RelativeToolTip": "Knockdown\\Member.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T10:11:29.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Player.h",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.h",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.h",
               "RelativeDocumentMoniker": "Knockdown\\Player.h",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.h",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.h",
               "RelativeToolTip": "Knockdown\\Player.h",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -127,13 +130,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.cpp",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.cpp",
               "RelativeDocumentMoniker": "Knockdown\\Player.cpp",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.cpp",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Player.cpp",
               "RelativeToolTip": "Knockdown\\Player.cpp",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAGMAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAHgAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-06-20T10:05:25.185Z",
               "EditorCaption": ""
@@ -142,27 +145,26 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Enemy.h",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.h",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.h",
               "RelativeDocumentMoniker": "Knockdown\\Enemy.h",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.h",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.h",
               "RelativeToolTip": "Knockdown\\Enemy.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-06-21T11:09:21.807Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Enemy.cpp",
-              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.cpp",
+              "DocumentMoniker": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.cpp",
               "RelativeDocumentMoniker": "Knockdown\\Enemy.cpp",
-              "ToolTip": "C:\\Users\\Administrator\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.cpp",
+              "ToolTip": "C:\\Users\\Legion\\Desktop\\Knockdown\\Knockdown\\Knockdown\\Enemy.cpp",
               "RelativeToolTip": "Knockdown\\Enemy.cpp",
               "ViewState": "AgIAAF0AAAAAAAAAAAAAACgAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-06-21T11:09:20.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-21T11:09:20.633Z"
             }
           ]
         }

@@ -10,16 +10,20 @@ class GameSet : public Setting
 private:
 	bool isGameRunning = true; // 게임이 시작되었는가?
 	bool isBattleStart = false; // 배틀이 시작되었는가?
-	const DWORD TIMER = 60000; // 60초 타이머
-	DWORD gameStartTime = 0; // 60초 타이머용 게임 시작 시간
+	const DWORD TIMER = 90000; // 90초 타이머
+	DWORD gameStartTime = 0; // 타이머용 게임 시작 시간
 	int timeleft = 0; // 타이머 남은 시간
 	int Result = 0; // 결과값 저장
+
+	DWORD idleTime = 0; // 아이들 시간 기록
+	DWORD P_DamageTime = 0; // 플레이어 데미지 출력 시간 기록
+	DWORD A_DamageTime = 0; // 적 데미지 출력 시간 기록
 
 protected:
 	Member member;
 	Player player;
 	Enemy enemy;
-	bool onceclear = true; // 추후삭제
+	bool idleBreath = true;  // 아이들 숨쉬는 애니메이션용
 
 public :
 	int GetResult() const{ return Result; }
@@ -39,6 +43,7 @@ public :
 	void HowToPlay(); // 게임 방법 설명 및 키 안내
 
 	void HpBarMaker(int hp); // HP 숫자에 따른 BAR 표시
+	void SwitchIdle(); // idle 애니메이션 바꾸기
 
 };
 

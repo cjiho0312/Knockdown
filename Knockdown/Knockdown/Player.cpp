@@ -111,7 +111,7 @@ void Player::Dodge()
 
 void Player::EndDodge()
 {
-    if (isDodging && GetTickCount64() - dodgeStartTime >= 500) // isDodging이 true이고, 0.5초가 지났는가?
+    if (isDodging && GetTickCount64() - dodgeStartTime >= 400) // isDodging이 true이고, 0.4초가 지났는가?
     {
         isDodging = false;
         repeatDodge += 1; // 회피반복 카운트 증가
