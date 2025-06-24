@@ -46,7 +46,7 @@ void Enemy::TryAttack(Member& player) // 원본값 받아오기 위해 참조
 		
 		isPreparingAttack = false; // 상태 초기화
 		lastAttackTime = GetTickCount64(); // 마지막 공격 시간에 현재 시간 저장
-		nextAttackDelay = (rand() % 2001) + 2000; // 2 ~ 5초가량 공격 딜레이를 줌
+		nextAttackDelay = (rand() % 2001) + 1000; // 2 ~ 3초가량 공격 딜레이를 줌
 
 		ENEMY = ATTACK; // 공격 동작
 		StateTime = GetTickCount64();
@@ -86,11 +86,8 @@ void Enemy::CheckECA()
 
 void Enemy::TakeDamage(int dmg, const Member & Attacker)
 {
-	if (isPreparingAttack) // 공격 준비 상태 중 데미지를 입었을 때
-	{
-		isPreparingAttack = false;
+		isPreparingAttack = false; // 공격 준비 상태 중 데미지를 입었을 때, 공격 준비 취소
 		lastAttackTime = GetTickCount64(); // lastAttackTime을 이용해 적정시간 후 다시 공격 준비하도록 설정
-	}
 	
 	repeatAttack = Attacker.RepeatAttack(); // player의 연속공격횟수 불러오기
 

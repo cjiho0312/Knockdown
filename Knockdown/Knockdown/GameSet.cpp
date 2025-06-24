@@ -159,6 +159,7 @@ void GameSet::BeforeRunGame()
     cout << "    \u25A0" << endl;
     CursorP(56, 14);
     cout << "\u25A0\u25A0\u25A0" << endl;
+    Beep(261,300);
     Sleep(1000);
 
     // 2
@@ -172,6 +173,7 @@ void GameSet::BeforeRunGame()
     cout << "\u25A0    " << endl;
     CursorP(56, 14);
     cout << "\u25A0\u25A0\u25A0" << endl;
+    Beep(261,300);
     Sleep(1000);
 
     // 1
@@ -185,6 +187,7 @@ void GameSet::BeforeRunGame()
     cout << "  \u25A0  " << endl;
     CursorP(56, 14);
     cout << "  \u25A0  " << endl;
+    Beep(261, 300);
     Sleep(1000);
 
     // GO! 추후 FIGHT로 변경
@@ -198,6 +201,7 @@ void GameSet::BeforeRunGame()
     cout << "\u25A0    \u25A0  \u25A0    \u25A0" << endl;
     CursorP(49, 14);
     cout << "\u25A0\u25A0\u25A0\u25A0  \u25A0\u25A0\u25A0\u25A0  \u25A0" << endl;
+    Beep(523, 300);
     Sleep(1000);
 
 
@@ -250,7 +254,7 @@ void GameSet::HpAndTimer()
     CursorP(110, 2);
     cout << "] ENEMY";
 
-    // CursorP(2, 6);
+    // CursorP(2, 30);
     // cout << "-------------------------------------------------------------------------------------------------------------------";
 
     CursorP(58, 2); // 타이머 출력

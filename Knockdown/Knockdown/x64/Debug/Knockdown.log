@@ -1,8 +1,10 @@
-﻿  GameSet.cpp
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(111,35): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(112,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(223,61): warning C4244: '=': 'ULONGLONG'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(780,38): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(842,38): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(880,34): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+﻿  Enemy.cpp
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(14,33): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(24,35): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(48,34): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(52,29): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(90,34): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(100,29): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(131,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(140,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   Knockdown.vcxproj -> C:\Users\Legion\Desktop\Knockdown\Knockdown\x64\Debug\Knockdown.exe
