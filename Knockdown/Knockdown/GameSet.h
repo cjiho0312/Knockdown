@@ -30,6 +30,7 @@ public :
 	void ResultGame(); // 게임 결과 평가
 
 	// 출력 처리용 함수 모음
+	void BeforeRunGame(); // RunGame 이전에 3초 카운트다운
 	void ResetCursor(); // 매 루프마다 커서 리셋, 기존 그래픽 지우기 함수
 	void HpAndTimer(); // 화면 상단에 각 멤버의 HP 바, 강공격 바, 타이머 출력
 	void PlayerPrint(); // 플레이어 상태에 따라 그래픽 표시

@@ -1,6 +1,15 @@
 #include "Player.h"
 
 
+void Player::SetPlayerState() // 동작 후 일정 시간이 지나면 IDLE 상태로 돌아오게 함 (회피 제외)
+{
+    if (ChangeState() && GetTickCount64() - StateTime >= 300) // 상태 수정 가능 상태이고, StateTime 이후 0.3초가 지났는가?
+    {
+        PLAYER = IDLE; // 다시 IDLE 상태로 변경
+        changeState = false; // 반복 실행 안 되게끔
+    }
+}
+
 void Player::PrepareAttack()
 {
     if (!isPreparingAttack && !isDodging) // 중복 실행을 막기 위한 조건문, 회피 중이지 않을 때 실행 가능
@@ -20,6 +29,8 @@ void Player::TryAttack(Member& enemy)
         isPreparingAttack = false; // 상태 초기화
 
         PLAYER = ATTACK; // 공격 동작
+        StateTime = GetTickCount64(); // 동작 시전 시간 저장
+        changeState = true;
     }
 }
 
@@ -58,19 +69,33 @@ void Player::AAttack(Member& target)
 
     PLAYER = A_ATTACK; // 강공격 동작
 
+    StateTime = GetTickCount64(); // 동작 시전 시간 저장
+    changeState = true;
+
     isAAttack = false; // 강공격 종료
 }
 
 void Player::CheckRA()
 {
-    if (repeatAttack >= 2) // 연속 공격 상태일 때
+    if (repeatAttack >= 1) // 연속 공격 상태일 때
     {
-        if (GetTickCount64() - AttackTime >= 3000) // 공격을 안 한지 3초가 지났는가?
+        if (GetTickCount64() - AttackTime >= 2500) // 공격을 안 한지 2.5초가 지났는가?
         {
             repeatAttack = 0; // 연속 공격 상태 해제
-            cout << "연속 공격 상태 해제.." << endl;
         }
     }
+}
+
+void Player::CheckRD()
+{
+    if (repeatDodge >= 2) // 연속 회피 상태일 때
+    {
+        if (GetTickCount64() - DodgeTime >= 1000) // 회피를 안 한지 1초가 지났는가?
+        {
+            repeatDodge = 0; // 연속 회피 상태 해제
+        }
+    }
+
 }
 
 void Player::Dodge()
@@ -78,7 +103,7 @@ void Player::Dodge()
     if (!isDodging) // 중복 실행을 막기 위한 조건문
     {
         isDodging = true;
-        dodgeStartTime = GetTickCount64();
+        dodgeStartTime = GetTickCount64(); // 회피 시작 시간 기록
 
         PLAYER = DODGE; // 회피 동작
     }
@@ -89,8 +114,35 @@ void Player::EndDodge()
     if (isDodging && GetTickCount64() - dodgeStartTime >= 500) // isDodging이 true이고, 0.5초가 지났는가?
     {
         isDodging = false;
+        repeatDodge += 1; // 회피반복 카운트 증가
+        DodgeTime = GetTickCount64();
 
-        PLAYER = IDLE; // 회피 종료 후 아이들 동작
+
+        if (repeatDodge < 3)
+        {
+            PLAYER = IDLE; // 회피 종료 후 아이들 동작
+        }
+        if (repeatDodge >= 3)
+        {
+            Tired();
+        }
+    }
+}
+
+void Player::Tired()
+{
+    PLAYER = TIRED; // 지침 동작
+    TiredTime = GetTickCount64(); // 동작 시전 시간 저장
+    dodgeCount = 0; // 회피 카운트 초기화
+    soTired = true;
+}
+
+void Player::EndTired()
+{
+    if (soTired == true && GetTickCount64() - TiredTime >= 2000) // 2초 후 지침상태 끝
+    {
+    PLAYER = IDLE; // 대기 상태로 변경
+    soTired = false; // 중복 방어
     }
 }
 
@@ -99,8 +151,6 @@ void Player::TakeDamage(int dmg, const Member& Attacker)
     if (isPreparingAttack)
     {
         CancelAttack();
-        cout << "공격 중 피격! 중단되었습니다." << endl;
-
     }
 
     hp -= dmg;
@@ -109,12 +159,15 @@ void Player::TakeDamage(int dmg, const Member& Attacker)
 
     PLAYER = GETDAMAGE; // 데미지 받는 동작
 
+    StateTime = GetTickCount64(); // 동작 시전 시간 저장
+    changeState = true;
+
     if (hp <= 0)
     {
         hp = 0;
         cout << "죽었습니다!" << endl;
 
-        STATE PLAYER = KO; // 쓰러짐 동작
+        PLAYER = KO; // 쓰러짐 동작
 
         isAlive = false;
     }

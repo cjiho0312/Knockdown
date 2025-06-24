@@ -49,8 +49,11 @@ void GameSet::UpdateGame() // 게임 업데이트
         return;
     }
 
+    player.EndTired(); // 지침상태 2초 후 지침 상태 종료
     player.EndDodge(); // x키 입력 시 0.5초 후 회피 종료, 회피 성공유무 확인
     player.CheckRA(); // repeatAttack 상태 확인, 불러오기
+    player.CheckRD(); // repeatDodge 상태 확인, 불러오기
+
     enemy.CheckECA(); // EnemyCanAttack 상태 확인, 불러오기
     
     
@@ -61,6 +64,10 @@ void GameSet::UpdateGame() // 게임 업데이트
     enemy.TryAttack(player); // 공격 준비 된 상태면 실행
     
     player.TryAttack(enemy); // z키 입력 시 0.7초 후 공격 실행
+
+    player.SetPlayerState(); // 플레이어의 동작 0.3초 후 IDLE로 변경
+
+    enemy.SetEnemyState(); // 적의 동작 0.3초 후 IDLE로 변경
 }
 
 void GameSet::RenderGame() // 게임 화면 표시
@@ -94,14 +101,7 @@ void GameSet::RenderGame() // 게임 화면 표시
 
 void GameSet::RunGame() // 게임 메인 루프
 {
-    cout << "3" << endl;
-    Sleep(1000);
-    cout << "2" << endl;
-    Sleep(1000);
-    cout << "1" << endl;
-    Sleep(1000);
-    cout << "GO!" << endl;
-    Sleep(1000);
+    BeforeRunGame();
 
     system("cls"); // 화면 clear
 
@@ -112,7 +112,9 @@ void GameSet::RunGame() // 게임 메인 루프
     while (isGameRunning == TRUE) // 게임 루프
     {
         RenderGame();
-        InputKey();
+
+        if (player.GetPlayerState() != 6) { InputKey(); }
+
         UpdateGame();
 
         Sleep(30); // 루프 속도 제한. 화면 깜빡임 보완용 짧은 지연
@@ -133,6 +135,69 @@ void GameSet::ResultGame() // 게임 결과값
     {
         Result = 0; // 비기면 0
     }
+}
+
+
+
+// 아래는 출력 관련 조각 함수들
+
+
+
+void GameSet::BeforeRunGame()
+{
+    // 3
+    CursorP(56, 10);
+    cout << "\u25A0\u25A0\u25A0" << endl;
+    CursorP(56, 11);
+    cout << "    \u25A0" << endl;
+    CursorP(56, 12);
+    cout << "\u25A0\u25A0\u25A0" << endl;
+    CursorP(56, 13);
+    cout << "    \u25A0" << endl;
+    CursorP(56, 14);
+    cout << "\u25A0\u25A0\u25A0" << endl;
+    Sleep(1000);
+
+    // 2
+    CursorP(56, 10);
+    cout << "\u25A0\u25A0\u25A0" << endl;
+    CursorP(56, 11);
+    cout << "    \u25A0" << endl;
+    CursorP(56, 12);
+    cout << "\u25A0\u25A0\u25A0" << endl;
+    CursorP(56, 13);
+    cout << "\u25A0    " << endl;
+    CursorP(56, 14);
+    cout << "\u25A0\u25A0\u25A0" << endl;
+    Sleep(1000);
+
+    // 1
+    CursorP(56, 10);
+    cout << "  \u25A0  " << endl;
+    CursorP(56, 11);
+    cout << "  \u25A0  " << endl;
+    CursorP(56, 12);
+    cout << "  \u25A0  " << endl;
+    CursorP(56, 13);
+    cout << "  \u25A0  " << endl;
+    CursorP(56, 14);
+    cout << "  \u25A0  " << endl;
+    Sleep(1000);
+
+    // GO! 추후 FIGHT로 변경
+    CursorP(49, 10);
+    cout << "\u25A0\u25A0\u25A0\u25A0  \u25A0\u25A0\u25A0\u25A0  \u25A0" << endl;
+    CursorP(49, 11);
+    cout << "\u25A0        \u25A0    \u25A0  \u25A0" << endl;
+    CursorP(49, 12);
+    cout << "\u25A0  \u25A0\u25A0  \u25A0    \u25A0  \u25A0" << endl;
+    CursorP(49, 13);
+    cout << "\u25A0    \u25A0  \u25A0    \u25A0" << endl;
+    CursorP(49, 14);
+    cout << "\u25A0\u25A0\u25A0\u25A0  \u25A0\u25A0\u25A0\u25A0  \u25A0" << endl;
+    Sleep(1000);
+
+
 }
 
 void GameSet::ResetCursor()
@@ -173,8 +238,8 @@ void GameSet::HpAndTimer()
     CursorP(110, 2);
     cout << "] ENEMY";
 
-    CursorP(2, 5);
-    cout << "-------------------------------------------------------------------------------------------------------------------";
+    // CursorP(2, 6);
+    // cout << "-------------------------------------------------------------------------------------------------------------------";
 
     CursorP(58, 2); // 타이머 출력
     cout << "<";
@@ -212,7 +277,10 @@ void GameSet::PlayerPrint()
     case 5 : // 강공격 상태
         cout << "\n\n\n\n\n\n\n\n\n\n           강공격 중입니다...";
         break;
-    case 6 : // 쓰러짐 상태
+    case 6 : // 지침 상태
+        cout << "\n\n\n\n\n\n\n\n\n\n           지침 상태입니다...";
+        break;
+    case 7: // 쓰러짐 상태
         cout << "\n\n\n\n\n\n\n\n\n\n           쓰려지는 중입니다...";
         break;
     }
@@ -248,20 +316,56 @@ void GameSet::EnemyPrint()
 
 void GameSet::GameText()
 {
+
+    //초기화 (화면 지우기)
+    CursorP(50, 7);
+    cout << "                                                               ";
+    CursorP(50, 16);
+    if (player.RepeatAttack() <= 1)
+    {
+        cout << "                                                            ";
+    }
+
+
     //플레이어 관련 text
+
     if (player.GetPlayerState() == 3) // 피격 상태일 때
     {
-        CursorP(50, 6);
-        cout << player.Damage();
+        CursorP(50, 7);
+        if (player.Damage() == 0)
+        {
+            cout << "MISS";
+        }
+        else
+        {
+            cout << player.Damage();
+        }
     }
-     
+
+    if (player.GetPlayerState() == 2) // 공격 상태일 때
+    {
+        
+        if (player.RepeatAttack() >= 2)
+        {
+            cout << "주의 : 연속 공격은 공격 명중률을 하락시킵니다!";
+        }
+    }
+
      
      
     //적 관련 text
+
     if (enemy.GetEnemyState() == 3) // 피격 상태일 때
     {
-        CursorP(70, 6);
-        cout << enemy.Damage();
+        CursorP(70, 7);
+        if (enemy.Damage() == 0)
+        {
+            cout << "MISS";
+        }
+        else
+        {
+            cout << enemy.Damage();
+        }
     }
 
 
@@ -269,6 +373,12 @@ void GameSet::GameText()
 
 void GameSet::HowToPlay()
 {
+
+    CursorP(2, 37);
+    cout << "--------------------------------------------------------------------------------------------------------------------";
+
+    CursorP(33, 38);
+    cout << "[Z] ATTACK       [X] DODGE       [A] SPECIAL ATTACK";
 }
 
 void GameSet::HpBarMaker(int hp)

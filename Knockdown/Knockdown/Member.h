@@ -18,7 +18,8 @@ protected:
 	bool isAAttack = false; // 강공격 상태인지 알려줌
 
 	int repeatAttack = 0; // 연속 공격 횟수
-	int dodgeCount = 0; // 회피 횟수
+	int repeatDodge = 0; // 연속 회피 횟수
+	int dodgeCount = 0; // 회피 성공 횟수
 
 
 	typedef enum _STATE // 상태 출력용
@@ -29,7 +30,8 @@ protected:
 		GETDAMAGE, // 피격 상태, 3
 		DODGE, // 회피 상태, 4
 		A_ATTACK, // 강공격 상태, 5
-		KO // 쓰러짐 상태, 6
+		TIRED, // 지침 상태, 6
+		KO // 쓰러짐 상태, 7
 	} STATE;
 
 	STATE _state;
@@ -60,7 +62,8 @@ public:
 
 	virtual void AAttack(Member& target); // 강공격
 
-	void ResetDodge() { dodgeCount = 0; } // 회피 횟수 초기화
+	int RepeatDodge() const { return repeatDodge; }
+
 	void IncreaseDodge() { dodgeCount++; } // 회피 횟수 증가
 	int DodgeCount() const { return dodgeCount; }
 
