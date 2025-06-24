@@ -616,6 +616,31 @@ void GameSet::EnemyPrint()
 "         ,=;;;;;;;;;;                         "
     };
 
+    string enemyDodgeAscii[enemyPrintHigh] = { // DODGE
+"                                              ",
+"                                              ",
+"                                              ",
+"                                              ",
+"                                              ",
+"                                              ",
+"              ,,;;;;;;,,                      ",
+"               ;;`   ;;;                      ",
+"              ;;`    ]:;..                    ",
+"           ;;,!;!;;;*;   :=,                  ",
+"     .*;* (   `; /.      $  ;@                ",
+"     (  ``;;;;~;;     / ,@    ;               ",
+"     `.;,,     :    ~;;~      @               ",
+"          `` - ~;;*!       : @                ",
+"               ;@=@@@@@@@@@@@                 ",
+"            :@@@@@@@@@@@@@@@@                 ",
+"         .@@;;#@@@@@@@@@@@@@;                 ",
+"       =:    ;,;;$- -$ ;   @                  ",
+"        `;;-      @ :@=-   =                  ",
+"             :;;,  !;;~     @                 ",
+"           _;;;,    =~;;;;;;;                 ",
+"         ,=;;;;;;;;;;                         "
+    };
+
 #pragma endregion
 
     CursorP(74, 12);
@@ -639,9 +664,8 @@ void GameSet::EnemyPrint()
                 cout << enemyIdle2Ascii[i];
             }
         }
-        
-
         break;
+
     case 1: // 공격 준비 상태
         for (int i = 0; i < enemyPrintHigh; i++)
         {
@@ -649,6 +673,7 @@ void GameSet::EnemyPrint()
             cout << enemyR_AttackAscii[i];
         }
         break;
+
     case 2: // 공격 상태
         for (int i = 0; i < enemyPrintHigh; i++)
         {
@@ -656,6 +681,7 @@ void GameSet::EnemyPrint()
             cout << enemyAttackAscii[i];
         }
         break;
+
     case 3: // 피격 상태
         for (int i = 0; i < enemyPrintHigh; i++)
         {
@@ -663,9 +689,15 @@ void GameSet::EnemyPrint()
             cout << enemyDamageAscii[i];
         }
         break;
+
     case 4: // 회피 상태
-        cout << "                                        회피 중입니다...";
+        for (int i = 0; i < enemyPrintHigh; i++)
+        {
+            CursorP(74, 12 + i);
+            cout << enemyDodgeAscii[i];
+        }
         break;
+
     case 6: // 쓰러짐 상태
         cout << "                                        쓰려지는 중입니다...";
         break;
