@@ -143,7 +143,6 @@ void Enemy::TakeDamage(int dmg, const Member & Attacker)
 			if (hp <= 0)
 			{
 				hp = 0;
-				cout << "상대가 죽었습니다!" << endl;
 
 				ENEMY = KO; // 쓰러짐 동작
 
