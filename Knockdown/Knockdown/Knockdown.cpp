@@ -20,8 +20,6 @@ int main()
 
     GameSet gameset;
     gameset.RunGame(); // 게임 실행
-    
-    gameset.ResultGame(); // 결과값 저장
 
     Endding endding(gameset);
     endding.printEndding(); // 엔딩화면

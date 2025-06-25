@@ -1,10 +1,29 @@
-﻿  Enemy.cpp
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(14,33): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(24,35): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(48,34): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(52,29): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(90,34): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(100,29): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(131,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\Legion\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(140,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  Knockdown.vcxproj -> C:\Users\Legion\Desktop\Knockdown\Knockdown\x64\Debug\Knockdown.exe
+﻿  Endding.cpp
+  Enemy.cpp
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(14,33): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(24,35): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(48,34): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(52,29): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(90,37): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(100,29): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(131,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Enemy.cpp(140,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  GameSet.cpp
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(100,35): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(101,30): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(220,61): warning C4244: '=': 'ULONGLONG'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(837,38): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(899,38): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\GameSet.cpp(937,34): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Knockdown.cpp
+  Player.cpp
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(18,41): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(32,35): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(60,32): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(73,31): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(113,40): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(125,35): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(142,31): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\Administrator\Desktop\Knockdown\Knockdown\Knockdown\Player.cpp(176,31): warning C4244: '=': 'ULONGLONG'에서 'DWORD'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  Knockdown.vcxproj -> C:\Users\Administrator\Desktop\Knockdown\Knockdown\x64\Debug\Knockdown.exe

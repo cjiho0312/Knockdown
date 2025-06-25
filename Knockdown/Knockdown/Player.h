@@ -34,6 +34,7 @@ public:
 
 	void Tired(); // 지침
 	void EndTired(); // Tired 상태 끝인지 확인
+	bool SoTired() { return soTired; }
 
 	void TakeDamage(int dmg, const Member& Attacker) override;
  

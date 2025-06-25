@@ -3,7 +3,7 @@
 
 void Player::SetPlayerState() // 동작 후 일정 시간이 지나면 IDLE 상태로 돌아오게 함 (회피 제외)
 {
-    if (ChangeState() && GetTickCount64() - StateTime >= 300) // 상태 수정 가능 상태이고, StateTime 이후 0.3초가 지났는가?
+    if (GetPlayerState() != 6 && ChangeState() && GetTickCount64() - StateTime >= 300) // 피곤 상태 아니고, 상태 수정 가능 상태이고, StateTime 이후 0.3초가 지났는가?
     {
         PLAYER = IDLE; // 다시 IDLE 상태로 변경
         changeState = false; // 반복 실행 안 되게끔
@@ -56,6 +56,7 @@ void Player::Attack(Member& enemy)
     enemy.TakeDamage(dam, *this);
 
     repeatAttack += 1; // 공격 카운트 업
+
     AttackTime = GetTickCount64();
 }
 
@@ -79,16 +80,22 @@ void Player::CheckRA()
 {
     if (repeatAttack >= 1) // 연속 공격 상태일 때
     {
-        if (GetTickCount64() - AttackTime >= 2500) // 공격을 안 한지 2.5초가 지났는가?
+        if (GetTickCount64() - AttackTime >= 2000) // 공격을 안 한지 2초가 지났는가?
         {
             repeatAttack = 0; // 연속 공격 상태 해제
         }
     }
+
+    if (repeatAttack >= 4) // 4회 이상 연속 공격 상태일 때
+    {
+        Tired();
+    }
+
 }
 
 void Player::CheckRD()
 {
-    if (repeatDodge >= 2) // 연속 회피 상태일 때
+    if (repeatDodge >= 1) // 연속 회피 상태일 때
     {
         if (GetTickCount64() - DodgeTime >= 1000) // 회피를 안 한지 1초가 지났는가?
         {
@@ -134,15 +141,22 @@ void Player::Tired()
     PLAYER = TIRED; // 지침 동작
     TiredTime = GetTickCount64(); // 동작 시전 시간 저장
     dodgeCount = 0; // 회피 카운트 초기화
+
+    isDodging = false; // 회피 중이던 거 취소
+    isPreparingAttack = false; // 공격 중이던 거 취소
+
+    repeatDodge = 0; // 연속회피 카운트 초기화
+    repeatAttack = 0; // 연속공격 카운트 초기화
+
     soTired = true;
 }
 
 void Player::EndTired()
 {
-    if (soTired == true && GetTickCount64() - TiredTime >= 2000) // 2초 후 지침상태 끝
+    if (soTired == true && GetTickCount64() - TiredTime >= 3000) // 3초 후 지침상태 끝
     {
-    PLAYER = IDLE; // 대기 상태로 변경
-    soTired = false; // 중복 방어
+        PLAYER = IDLE; // 대기 상태로 변경
+        soTired = false; // 중복 방어
     }
 }
 
@@ -165,7 +179,6 @@ void Player::TakeDamage(int dmg, const Member& Attacker)
     if (hp <= 0)
     {
         hp = 0;
-        cout << "죽었습니다!" << endl;
 
         PLAYER = KO; // 쓰러짐 동작
 

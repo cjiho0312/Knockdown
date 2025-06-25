@@ -2,34 +2,41 @@
 
 void GameSet::InputKey() // 키 입력 처리
 {
-    if (_kbhit())
+    if (player.GetPlayerState() == 0 || player.GetPlayerState() == 1) // 대기 중, 공격 준비 중일 때만 키 입력 받을 수 있게 함
     {
-        int key = _getch();
+        while (_kbhit())
+        {
+            int key = _getch();
+    
 
-        if (key == 'z')
-        {
-            if (!player.IsPreparingAttack()) // 공격 준비동작이 아닐 때 플레이어가 z를 누르면
+            if (key == 'z')
             {
-                player.PrepareAttack(); // 공격 준비 동작 시작
+                if (!player.IsPreparingAttack() && player.GetPlayerState() != 2 && player.GetPlayerState() != 3) // 공격 준비동작, 공격동작, 피격동작 아닐 때 플레이어가 z를 누르면
+                {
+                    player.PrepareAttack(); // 공격 준비 동작 시작
+                }
             }
-        }
-        else if (key == 'x') // x 누르면
-        {
-            if (player.IsPreparingAttack()) // 공격 중일 때는
+            else if (key == 'x') // x 누르면
             {
-                player.CancelAttack(); // 공격 중단 후
+        
+                if (player.IsPreparingAttack()) // 공격 중일 때는
+                {
+                    player.CancelAttack(); // 공격 중단 후
+                }
+                player.Dodge(); // 회피 실행
+        
             }
-            player.Dodge(); // 회피 실행
-        }
-        else if (key == 'a')
-        {
-            if (!player.IsPreparingAttack() && !player.IsDodging() && player.DodgeCount() >= 3)
-                // 공격, 회피 중이지 않고, 회피 카운트가 3 이상일 경우
+            else if (key == 'a')
             {
-                player.AAttack(enemy);
+                if (!player.IsPreparingAttack() && !player.IsDodging() && player.DodgeCount() >= 3)
+                    // 공격, 회피 중이지 않고, 회피 카운트가 3 이상일 경우
+                {
+                    player.AAttack(enemy);
+                }
             }
         }
     }
+
 }
 
 void GameSet::UpdateGame() // 게임 업데이트
@@ -49,7 +56,7 @@ void GameSet::UpdateGame() // 게임 업데이트
         return;
     }
 
-    player.EndTired(); // 지침상태 2초 후 지침 상태 종료
+    player.EndTired(); // 지침상태 3초 후 지침 상태 종료
     player.EndDodge(); // x키 입력 시 0.5초 후 회피 종료, 회피 성공유무 확인
     player.CheckRA(); // repeatAttack 상태 확인, 불러오기
     player.CheckRD(); // repeatDodge 상태 확인, 불러오기
@@ -81,24 +88,6 @@ void GameSet::RenderGame() // 게임 화면 표시
     HowToPlay(); // 게임 방법 설명 및 키 안내
 
     SwitchIdle(); // 0.5초마다 아이들 스위치
-
-
-
-    /*
-    if (enemy.GetHP() < 10 && onceclear) // 추후삭제. 남은 뎀지가 안 보여서.. 디버깅용
-    {
-        system("cls");
-        onceclear = false;
-    }
-
-    CursorP(0, 0);
-    cout << "========== KNOCKDOWN ==========    " << timeleft;
-    cout << "\n[Player HP]: " << player.GetHP() << " | [Dodge]: " << player.DodgeCount() << "\n";
-    cout << "[Enemy  HP]: " << enemy.GetHP() << "\n";
-    cout << "================================\n\n";
-    cout << "Z: 공격   X: 회피\n";
-    */
-    
 }
 
 void GameSet::RunGame() // 게임 메인 루프
@@ -116,16 +105,20 @@ void GameSet::RunGame() // 게임 메인 루프
     {
         RenderGame();
 
-        if (player.GetPlayerState() != 6) { InputKey(); }
+        InputKey();
 
         UpdateGame();
 
         Sleep(30); // 루프 속도 제한. 화면 깜빡임 보완용 짧은 지연
     }
+
+    ResultGame();
 }
 
 void GameSet::ResultGame() // 게임 결과값
 {
+
+
     if (player.GetHP() > enemy.GetHP())
     {
         Result = 2; // 이기면 2
@@ -261,11 +254,15 @@ void GameSet::HpAndTimer()
     cout << "<";
     if (timeleft >= 10)
     {
-    cout << timeleft;
+        cout << timeleft;
     }
     else if (timeleft < 10)
     {
-    cout << " " << timeleft;
+        cout << " " << timeleft;
+    }
+    else if (timeleft <= 0)
+    {
+        cout << " 0";
     }
     cout << ">";
 }
@@ -481,7 +478,63 @@ void GameSet::PlayerPrint() //22줄
         cout << "            -;,..;;.                        ,-:;;  " << endl;
         break;
     case 7: // 쓰러짐 상태
-        cout << "\n\n\n\n\n\n\n\n\n\n           쓰려지는 중입니다...";
+        
+        // 쓰러짐 그래픽 1
+
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                     ~`````~;                      " << endl;
+        cout << "                    @       @                      " << endl;
+        cout << "              ;;```;@;     ;@!;;~~,,               " << endl;
+        cout << "             ;;    @@;:;;;;;@@:     ;,             " << endl;
+        cout << "            `;&   .@@@;~;;;#@@#     ;;             " << endl;
+        cout << "             ;; U  @@@@@@@@@@|   u;;               " << endl;
+        cout << "              !+   ,@@@@@@@@#    ;;                " << endl;
+        cout << "               !   ;@@@@@@@@)  U ;                 " << endl;
+        cout << "              .;   ;;.     .-;   :;                " << endl;
+        cout << "            ,;:.    ;;;;;, ; ;   ;#;               " << endl;
+        cout << "          ;=.  !;    ;;,   -;    .,;;: :~          " << endl;
+        cout << "          $    ,$ -~           ;:;:   u  ;;.       " << endl;
+        cout << "           ,$    $               ``` :,,,  `,      " << endl;
+        cout << "              ;;  $                      ;!  -,    " << endl;
+        cout << "               .;-:!                       ;   ~;  " << endl;
+        cout << "           -$;;; . #                       ,!   ~~ " << endl;
+        cout << "            -;,..;;.                        ,-:;;  " << endl;
+
+        Sleep(1000);
+
+        // 쓰러짐 그래픽 2
+
+        CursorP(1, 12); // 덮어쓰기
+
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                ,, ,@@$;````~@@;,,,                " << endl;
+        cout << "           ,~;;;;. @@;       ;!@    ;;..           " << endl;
+        cout << "          ;...    `@;!       ;@@ ` ,,,;;  ``;, ..; " << endl;
+        cout << "         (  :^`)&   @%!;;;;;;;@@  (@ !  #  ~    ; ~" << endl;
+        cout << "         `;;;#,; , ;@@@!;;;/@@@;;;;$,,,/;,,;#;;'@;;" << endl;
+
+        Sleep(2000);
+
         break;
     }
    
@@ -732,7 +785,7 @@ void GameSet::GameText()
         cout << "       ";
     }
 
-    CursorP(37, 7); // 보조 text 칸 지우기
+    CursorP(35, 7); // 보조 text 칸 지우기
     if (player.RepeatAttack() <= 1)
     {
         cout << "                                                                   ";
@@ -795,9 +848,9 @@ void GameSet::GameText()
 
     if (player.GetPlayerState() == 6) // 지침 상태일 때
     {
-        CursorP(37, 7);
+        CursorP(35, 7);
         
-            cout << "주의 : 빠른 연속 회피는 몸을 지치게 만듭니다! ";
+            cout << "주의 : 빠른 연속 공격, 회피는 몸을 지치게 만듭니다!";
         
     }
 
