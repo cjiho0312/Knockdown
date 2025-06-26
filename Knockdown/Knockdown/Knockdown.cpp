@@ -13,6 +13,7 @@ int main()
     Setting setting;
     setting.InitialSetup(); // 초기 설정
 
+    
     Mainmenu mainmenu;
     mainmenu.printmain(); // 메인화면
 

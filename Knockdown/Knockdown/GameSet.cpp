@@ -147,6 +147,9 @@ void GameSet::ResultGame() // 게임 결과값
         {
         Result = 2; // 이기면 2
 
+        CursorP(70, 2);
+        cout << "                  ";  // hp바
+
         CursorP(1, 12);
         // 플레이어 공격 모션
         cout << "                                                                  " << endl;
@@ -273,6 +276,9 @@ void GameSet::ResultGame() // 게임 결과값
         else if (!player.IsAlive())
     {
         Result = 1; // 지면 1
+
+        CursorP(10, 2);
+        cout << "                          "; // hp바
 
         CursorP(1, 12);
         // 플레이어 KO1

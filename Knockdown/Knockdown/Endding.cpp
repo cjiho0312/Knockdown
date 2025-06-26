@@ -8,11 +8,35 @@ void Endding::printEndding()
 
 	EndResult = gameset.GetResult(); // GameSet에서 Result값 받아오기
 
+		string HAND[20]
+		{
+		"              ~_,",
+		"           ~*    -",
+		"          :,   .@!;- *",
+		" ^~@     :,    ;:.   ;",
+		" ~  #.   -.    *!    $.,,",
+		"-@   # :$    $@    $#  ,@",
+		" @   -**          #-   *,~.",
+		" *.              :    ;   ;",
+		" --                 .* , ~ ",
+		"  --                    #",
+		"  :                    *",
+		"  =, ;           ~   ~=",
+		"    -@            ! -;",
+		"      @            ;@",
+		"      @             @",
+		"      #,            .;",
+		"      #,             *-",
+		"     ~-              =",
+		"      -              .!",
+		"     ,-               *"
+		};
+
 	if (EndResult == 0) // 비겼을 때
 	{
 		string TIMEOUT[10]{
 		"  __~~~____~~~~___~~~~~_____~~___~~~~~____~~~___~~__",
-		" //  ,___  .  .    ,   ___      ___  ,   , .___~    ＼",
+		" //  ,___  .  .    ,   ___      ___  ,   , .____    ＼",
 		"//     |   |  |＼  /|  |__     /   ＼ |   |   |      !",
 		"!!     |   |  | ＼/ |  |       |.   | |   |   |      !",
 		"!!     |   |  |  |  |  |__,    ＼__/  ＼__/   |      /",
@@ -28,9 +52,54 @@ void Endding::printEndding()
 			CursorP(33, 6 + i);
 			cout << TIMEOUT[i];
 		}
-		Sleep(2000);
+
+		for (int i = 0; i < 20; i++)
+		{
+			CursorP(49, 17 + i);
+			cout << HAND[i];
+		}
+
+		Sleep(2500);
 
 		system("cls");
+
+		CursorP(0, 0); // 엔딩 화면 출력
+
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                            \u25A0\u25A0\u25A0    \u25A0\u25A0\u25A0      \u25A0\u25A0    \u25A0  \u25A0  \u25A0" << endl;
+		cout << "                                                            \u25A0    \u25A0  \u25A0    \u25A0  \u25A0    \u25A0  \u25A0  \u25A0  \u25A0" << endl;
+		cout << "                                                            \u25A0    \u25A0  \u25A0\u25A0\u25A0    \u25A0\u25A0\u25A0\u25A0  \u25A0  \u25A0  \u25A0" << endl;
+		cout << "                                                            \u25A0    \u25A0  \u25A0  \u25A0    \u25A0    \u25A0  \u25A0  \u25A0  \u25A0" << endl;
+		cout << "                             ::,~,                          \u25A0\u25A0\u25A0    \u25A0    \u25A0  \u25A0    \u25A0    \u25A0  \u25A0" << endl;
+		cout << "                          &=.    *                                                     " << endl;
+		cout << "                         @@ u _  _@                                                    " << endl;
+		cout << "                    ;;```;@@     ;@!;;~~,,                                             " << endl;
+		cout << "                   ;;   !@@@~:;;@@@:     ;,                                            " << endl;
+		cout << "                  `;&   .@@@@;~;@@@#     ;;                                            " << endl;
+		cout << "                   ;;    @@@@@@@@@@|    ;;                                             " << endl;
+		cout << "                    !+   ,@@@@@@@@#    ;;                                              " << endl;
+		cout << "                     !   ;@@@@@@@@)    ;                                               " << endl;
+		cout << "                    .;   ;;.     .-;   :;                                              " << endl;
+		cout << "                  ,;:.    ;;;;;, ; ;   ;#;                                             " << endl;
+		cout << "                ;=.  !;    ;;,   -;    .,;;: :~                                        " << endl;
+		cout << "                $    ,$ -~           ;:;:      ;;.                                     " << endl;
+		cout << "                 ,$    $               ``` :,,,  `,                                    " << endl;
+		cout << "                    ;;  $                      ;!  -,                                  " << endl;
+		cout << "                     .;-:!                       ;   ~;                                " << endl;
+		cout << "                 -$;;; . #                       ,!   ~~                               " << endl;
+		cout << "                  -;,..;;.                        ,-:;;                                " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+		cout << "                                                                                       " << endl;
+
+
 
 	}	
 	else if (EndResult == 2) // 이겼을 때
@@ -53,11 +122,19 @@ void Endding::printEndding()
 			CursorP(32, 6 + i);
 			cout << KNOCKDOWN[i];
 		}
-		Sleep(2000);
+
+		for (int i = 0; i < 20; i++)
+		{
+			CursorP(49, 17 + i);
+			cout << HAND[i];
+		}
+
+		Sleep(2500);
 
 		system("cls");
 
 		CursorP(0, 0); // 엔딩 화면 출력
+		cout << "                                                                                       " << endl;
 		cout << "                                                                                       " << endl;
 		cout << "                                                                                       " << endl;
 		cout << "                                                                                       " << endl;
@@ -113,11 +190,20 @@ void Endding::printEndding()
 			CursorP(32, 6 + i);
 			cout << KNOCKDOWN[i];
 		}
-		Sleep(2000);
+
+		for (int i = 0; i < 20; i++)
+		{
+			CursorP(49, 17 + i);
+			cout << HAND[i];
+		}
+		
+
+		Sleep(2500);
 
 		system("cls");
 
 		CursorP(0, 0); // 엔딩 화면 출력
+		cout << "                                                                                       " << endl;
 		cout << "                                                                                       " << endl;
 		cout << "                                                                                       " << endl;
 		cout << "                                                                                       " << endl;
