@@ -51,8 +51,7 @@ void GameSet::UpdateGame() // 게임 업데이트
 
     if (GetTickCount64() - gameStartTime >= TIMER) // 타이머 끝나면 게임 종료
     {
-        cout << "TIME OVER" << endl;
-        isGameRunning = false;
+        isGameRunning = false; // 게임 종료
         return;
     }
 
@@ -79,7 +78,6 @@ void GameSet::UpdateGame() // 게임 업데이트
 
 void GameSet::RenderGame() // 게임 화면 표시
 {
-
     ResetCursor(); // 매 루프마다 커서 리셋, 기존 그래픽 지우기 함수
     HpAndTimer(); // 화면 상단에 각 멤버의 HP 바, 강공격 바, 타이머 출력
     EnemyPrint(); // 적 상태에 따라 그래픽 표시
@@ -92,6 +90,8 @@ void GameSet::RenderGame() // 게임 화면 표시
 
 void GameSet::RunGame() // 게임 메인 루프
 {
+    RenderGame();
+
     BeforeRunGame();
 
     system("cls"); // 화면 clear
@@ -112,32 +112,357 @@ void GameSet::RunGame() // 게임 메인 루프
         Sleep(30); // 루프 속도 제한. 화면 깜빡임 보완용 짧은 지연
     }
 
-    // 공격 모션 수동으로 넣기
-    RenderGame(); // 마지막 장면 출력
+    ResultGame(); // 결과 애니메이션, 결과값 저장
 
-    ResultGame();
 } 
 
 void GameSet::ResultGame() // 게임 결과값
 {
 
+#pragma region Reset
 
-    if (player.GetHP() > enemy.GetHP())
+        CursorP(40, 8);
+        cout << "       ";
+        CursorP(40, 9);
+        cout << "       ";
+        CursorP(40, 10);
+        cout << "       ";
+        CursorP(75, 8);
+        cout << "       ";
+        CursorP(75, 9);
+        cout << "       ";
+        CursorP(75, 10);
+        cout << "       ";
+        CursorP(35, 7); // 보조 text 칸 지우기
+        cout << "                                                                   ";
+
+#pragma endregion
+
+
+    if (!player.IsAlive() || !enemy.IsAlive()) // 둘 중 한 명이 KO 됐을 때
     {
+        ResetCursor(); // 겹치는 부분 삭제
+
+        if (player.IsAlive())
+        {
         Result = 2; // 이기면 2
+
+        CursorP(1, 12);
+        // 플레이어 공격 모션
+        cout << "                                                                  " << endl;
+        cout << "                                                                  " << endl;
+        cout << "                                                                  " << endl;
+        cout << "                                      &;:,~,                      " << endl;
+        cout << "                                    &=.   _*                      " << endl;
+        cout << "                                    @@      3               _ -   " << endl;
+        cout << "                             ,;;;;`;@@.   ~@@!;;~~;;;:--  ~;    ) " << endl;
+        cout << "                     ,_,;;`````   !@@@~:;;@@@:    .,:;;;;~  :```  " << endl;
+        cout << "                   `~`` ..;-``;`;;.@@@@;~;@@@#;```                " << endl;
+        cout << "             ( ~ ;; ``            @@@@@@@@`                       " << endl;
+        cout << "                                ~@@@@@@@@`                        " << endl;
+        cout << "                              ~@@@@@@@@@                          " << endl;
+        cout << "                            .;~;;  -~:;                           " << endl;
+        cout << "                          ~;:.;;     ;#;                          " << endl;
+        cout << "                          ;=.    ;$; ~:  ~;                       " << endl;
+        cout << "                         $   ,$  ;:;:    ;;.                      " << endl;
+        cout << "                      ~,$     !:   ~:;  , !:                      " << endl;
+        cout << "                     ,$    $    ~:;;  ;~                          " << endl;
+        cout << "                  ~ $    ;;  ~;!  -$,                             " << endl;
+        cout << "                .;-:!  ?/   ~;   /~;                              " << endl;
+        cout << "               -$; . ;    ~ ,!   ~                                " << endl;
+        cout << "         __ -;,. ;;   ,-:;                                        " << endl;
+
+
+        string enemyKO1Ascii[22] = { // KO1
+        "                                              ",
+        "                                              ",
+        "                                              ",
+        "                                              ",
+        "                                              ",
+        "                ..                            ",
+        "               ``;;;;;*~                      ",
+        "                ;    ;;;@                     ",
+        "               ;;  / ]:;;                     ",
+        "                = ;;;;,/  ``*,                ",
+        "              ;!;;;*;    -:  =,               ",
+        "             /.      $     ;  @               ",
+        "            ;;    / ,@     ,  ;               ",
+        "           :     ~;;~     ,  @                ",
+        "           # ;  ;*!       :  @                ",
+        "          ;.   *~         ; ;                 ",
+        "          [ `  ;@=@@@@@@@@@@@                 ",
+        "          ;` :@@@@@@@@@@@@@@@@                ",
+        "           .@;;#@@@@@@@@@@@@@;                ",
+        "           ;;      *@!!$;.   ;;               ",
+        "          #;;              ``$` ;@; ;;        ",
+        "           #;;;;`;###;;;;;;,;,,,&,, # ~~      "
+        };
+
+
+        for (int i = 0; i < 22; i++)
+        {
+            CursorP(74, 12 + i);
+            cout << enemyKO1Ascii[i];
+        }
+
+        Sleep(1000);
+        ResetCursor(); // 겹치는 부분 삭제
+
+        CursorP(1, 12);
+
+        // 플레이어 아이들
+        cout << "                      ~;~-~,                       " << endl;
+        cout << "                  .;;;;;;;-,)                      " << endl;
+        cout << "                .;~ ;/                             " << endl;
+        cout << "               !  *;/  ::,~,                       " << endl;
+        cout << "               ,:   &=. _  *                       " << endl;
+        cout << "                !   @@    3 @              :;-     " << endl;
+        cout << "                 # ;@@.   ~@@!;;~~;;;:--  ~;   )   " << endl;
+        cout << "                  !@@@~:;;@@@:    .,:;;;;~  :;     " << endl;
+        cout << "                  .@@@@;~;@@@#;;;`                 " << endl;
+        cout << "                   @@@@@@@@@@=                     " << endl;
+        cout << "                    @@@@@@@@@-                     " << endl;
+        cout << "                   @@@@@@@@@@-                     " << endl;
+        cout << "              .;~;;       .-~~;:;                  " << endl;
+        cout << "            ,;:.;;    ;;;,       ;#;               " << endl;
+        cout << "          ;=.    ;$;;,   -;:~ ~;;:  :~;            " << endl;
+        cout << "           $   ,$            ;:;:      ;;.         " << endl;
+        cout << "           ,$   !:               ~:;;    ,!:       " << endl;
+        cout << "            ,$   $                   :;;;  :;~     " << endl;
+        cout << "              ;;  $                      ;!  -$,   " << endl;
+        cout << "               .;-:!                       ;   ~;  " << endl;
+        cout << "           -$;;; . #                       ,!   ~~ " << endl;
+        cout << "            -;,..;;.                        ,-:;;  " << endl;
+
+        string enemyKO2Ascii[22] = { // KO2
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        "                                                                  ",
+        " ..         ,,;;;;;;;;;;,,;,@@@#,                                 ",
+        "``;;;;;*~``` , ,,,,;;;,,,  @@@@@@;;#@@;,  ;                       ",
+        " ;    ;;;@ ;#  ^$  ~~    ;;@;;      *@!!$;@@. ;;                  ",
+        ";;  / ]:;;  ;/ '       .     ;&             ``$` ;@; ;;           ",
+        " = ;;;;,/#####;;,,,;;;;,,,, #;;;;`;###;;;;;;,;,,,&,, # ~~         "
+        };
+
+
+        for (int i = 0; i < 22; i++)
+        {
+            CursorP(54, 12 + i);
+            cout << enemyKO2Ascii[i];
+        }
+
+        Sleep(1000);
 
 
     }
-    else if (player.GetHP() < enemy.GetHP())
+        else if (!player.IsAlive())
     {
         Result = 1; // 지면 1
 
+        CursorP(1, 12);
+        // 플레이어 KO1
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                     ~`````~;                      " << endl;
+        cout << "                    @       @                      " << endl;
+        cout << "              ;;```;@;     ;@!;;~~,,               " << endl;
+        cout << "             ;;    @@;:;;;;;@@:     ;,             " << endl;
+        cout << "            `;&   .@@@;~;;;#@@#     ;;             " << endl;
+        cout << "             ;; U  @@@@@@@@@@|   u;;               " << endl;
+        cout << "              !+   ,@@@@@@@@#    ;;                " << endl;
+        cout << "               !   ;@@@@@@@@)  U ;                 " << endl;
+        cout << "              .;   ;;.     .-;   :;                " << endl;
+        cout << "            ,;:.    ;;;;;, ; ;   ;#;               " << endl;
+        cout << "          ;=.  !;    ;;,   -;    .,;;: :~          " << endl;
+        cout << "          $    ,$ -~           ;:;:   u  ;;.       " << endl;
+        cout << "           ,$    $               ``` :,,,  `,      " << endl;
+        cout << "              ;;  $                      ;!  -,    " << endl;
+        cout << "               .;-:!                       ;   ~;  " << endl;
+        cout << "           -$;;; . #                       ,!   ~~ " << endl;
+        cout << "            -;,..;;.                        ,-:;;  " << endl;
+
+
+        string enemyAttackAscii[22] = { // ATTACK
+        "                                                                  ",
+        "                                                                  ",
+        "                      ..                                          ",
+        "                     ``;;;;;*~                                    ",
+        "                      ;    ;;;@                                   ",
+        "                     ;;  / ]:;;                                   ",
+        ".;;;.. ,.,,,,,   ,,,;; = ;;;;,/ -,                                ",
+        "(  !!  ``;    ;;``     ,;;;;*;    -:                              ",
+        " ;;.``` ;;;,  ,,      /.     $    . @                             ",
+        "                (  ;;;    / ,@     . ;                            ",
+        "                 .   :    ~;;~      , @                           ",
+        "                  ` - ~;;*!          : -                          ",
+        "                           *~         ; ;                         ",
+        "                            ;@=@@@@@@@@@@@                        ",
+        "                            :@@@@@@@@@@@@@@                       ",
+        "                            .@;;#@@@@@@@@@@@                      ",
+        "                          ;;      ;*@!!  ! ;;                     ",
+        "                         =:     ,;;$ #      @;                    ",
+        "                          `;;-      @ ;;,   `;;                   ",
+        "                             :;;,  !;;~   ;;!   @;                ",
+        "                             _;;;,    =     ,;    ;;              ",
+        "                           ,=;;;;;;;;;;   ;;;;;;;;                "
+        };
+
+        for (int i = 0; i < 22; i++)
+        {
+            CursorP(54, 12 + i);
+            cout << enemyAttackAscii[i];
+        }
+
+        Sleep(1000);
+        ResetCursor(); // 겹치는 부분 삭제
+
+        CursorP(1, 12); // 덮어쓰기
+        // KO2
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                                                   " << endl;
+        cout << "                ,, ,#@$;@@@@@&=;,,,                " << endl;
+        cout << "             ,,;;. @#````  `#!@    ;;..            " << endl;
+        cout << "          ,;;.    `@!       ;#@ ` ,,,;;  ``;, ..;  " << endl;
+        cout << "         (  :^`)&   @!;;;;;;;@@  (@ !  #  ~    ; ~ " << endl;
+        cout << "         `;;;#,; , ;@@!;;;/ @@;;;;$,,,/;,,;#;;'@;; " << endl;
+
+
+        string enemyIdleAscii[22] = { // IDLE
+        "                                              ",
+        "                ..                            ",
+        "               ``;;;;;*~                      ",
+        "                ;    ;;;@                     ",
+        "               ;;  / ]:;;                     ",
+        "                = ;;;;,/  ``*,                ",
+        "       ;;,,   ;!;;;*;    -:  =,               ",
+        " .*;* (   `; /.      $     ;  @               ",
+        " (  ``;;;;~;;     / ,@     ,  ;               ",
+        "  `.;,,     :    ~;;~     ,  @                ",
+        "       `` - ~;;*!         :  @                ",
+        "               *~         ; ;                 ",
+        "               ;@=@@@@@@@@@@@                 ",
+        "            :@@@@@@@@@@@@@@@@                 ",
+        "          .@;;#@@@@@@@@@@@@@;                 ",
+        "         ;;     ;*@!!$;.;!;@                  ",
+        "        =:   ;,;;$- -$ ;    @                 ",
+        "         !;       -$ -$.    --                ",
+        "          `;;-      @ :@=-   =                ",
+        "             :;;,  !;;~     @                 ",
+        "           _;;;,    =~;;;;;;;                 ",
+        "         ,=;;;;;;;;;;                         "
+        };
+
+
+        for (int i = 0; i < 22; i++)
+        {
+            CursorP(74, 12 + i);
+            cout << enemyIdleAscii[i];
+        }
+
+        Sleep(1000);
+
+
     }
-    else
+    }
+    else // 비기거나, 시간이 끝날 때까지 아무도 KO 되지 않았을 때
     {
         Result = 0; // 비기면 0
 
+        ResetCursor(); // 겹치는 부분 삭제
 
+        CursorP(1, 12);
+
+        // 플레이어 아이들
+        cout << "                      ~;~-~,                       " << endl;
+        cout << "                  .;;;;;;;-,)                      " << endl;
+        cout << "                .;~ ;/                             " << endl;
+        cout << "               !  *;/  ::,~,                       " << endl;
+        cout << "               ,:   &=. _  *                       " << endl;
+        cout << "                !   @@    3 @              :;-     " << endl;
+        cout << "                 # ;@@.   ~@@!;;~~;;;:--  ~;   )   " << endl;
+        cout << "                  !@@@~:;;@@@:    .,:;;;;~  :;     " << endl;
+        cout << "                  .@@@@;~;@@@#;;;`                 " << endl;
+        cout << "                   @@@@@@@@@@=                     " << endl;
+        cout << "                    @@@@@@@@@-                     " << endl;
+        cout << "                   @@@@@@@@@@-                     " << endl;
+        cout << "              .;~;;       .-~~;:;                  " << endl;
+        cout << "            ,;:.;;    ;;;,       ;#;               " << endl;
+        cout << "          ;=.    ;$;;,   -;:~ ~;;:  :~;            " << endl;
+        cout << "           $   ,$            ;:;:      ;;.         " << endl;
+        cout << "           ,$   !:               ~:;;    ,!:       " << endl;
+        cout << "            ,$   $                   :;;;  :;~     " << endl;
+        cout << "              ;;  $                      ;!  -$,   " << endl;
+        cout << "               .;-:!                       ;   ~;  " << endl;
+        cout << "           -$;;; . #                       ,!   ~~ " << endl;
+        cout << "            -;,..;;.                        ,-:;;  " << endl;
+
+
+        string enemyIdleAscii[22] = { // IDLE
+        "                                              ",
+        "                ..                            ",
+        "               ``;;;;;*~                      ",
+        "                ;    ;;;@                     ",
+        "               ;;  / ]:;;                     ",
+        "                = ;;;;,/  ``*,                ",
+        "       ;;,,   ;!;;;*;    -:  =,               ",
+        " .*;* (   `; /.      $     ;  @               ",
+        " (  ``;;;;~;;     / ,@     ,  ;               ",
+        "  `.;,,     :    ~;;~     ,  @                ",
+        "       `` - ~;;*!         :  @                ",
+        "               *~         ; ;                 ",
+        "               ;@=@@@@@@@@@@@                 ",
+        "            :@@@@@@@@@@@@@@@@                 ",
+        "          .@;;#@@@@@@@@@@@@@;                 ",
+        "         ;;     ;*@!!$;.;!;@                  ",
+        "        =:   ;,;;$- -$ ;    @                 ",
+        "         !;       -$ -$.    --                ",
+        "          `;;-      @ :@=-   =                ",
+        "             :;;,  !;;~     @                 ",
+        "           _;;;,    =~;;;;;;;                 ",
+        "         ,=;;;;;;;;;;                         "
+        };
+
+
+        for (int i = 0; i < 22; i++)
+        {
+            CursorP(74, 12 + i);
+            cout << enemyIdleAscii[i];
+        }
+
+        Sleep(1000);
     }
 }
 
@@ -149,58 +474,61 @@ void GameSet::ResultGame() // 게임 결과값
 
 void GameSet::BeforeRunGame()
 {
+    CursorP(58, 2);
+    cout << "<80>";
+
     // 3
-    CursorP(56, 10);
+    CursorP(57, 10);
     cout << "\u25A0\u25A0\u25A0" << endl;
-    CursorP(56, 11);
+    CursorP(57, 11);
     cout << "    \u25A0" << endl;
-    CursorP(56, 12);
+    CursorP(57, 12);
     cout << "\u25A0\u25A0\u25A0" << endl;
-    CursorP(56, 13);
+    CursorP(57, 13);
     cout << "    \u25A0" << endl;
-    CursorP(56, 14);
+    CursorP(57, 14);
     cout << "\u25A0\u25A0\u25A0" << endl;
     Beep(261,300);
     Sleep(1000);
 
     // 2
-    CursorP(56, 10);
+    CursorP(57, 10);
     cout << "\u25A0\u25A0\u25A0" << endl;
-    CursorP(56, 11);
+    CursorP(57, 11);
     cout << "    \u25A0" << endl;
-    CursorP(56, 12);
+    CursorP(57, 12);
     cout << "\u25A0\u25A0\u25A0" << endl;
-    CursorP(56, 13);
+    CursorP(57, 13);
     cout << "\u25A0    " << endl;
-    CursorP(56, 14);
+    CursorP(57, 14);
     cout << "\u25A0\u25A0\u25A0" << endl;
     Beep(261,300);
     Sleep(1000);
 
     // 1
-    CursorP(56, 10);
+    CursorP(57, 10);
     cout << "  \u25A0  " << endl;
-    CursorP(56, 11);
+    CursorP(57, 11);
     cout << "  \u25A0  " << endl;
-    CursorP(56, 12);
+    CursorP(57, 12);
     cout << "  \u25A0  " << endl;
-    CursorP(56, 13);
+    CursorP(57, 13);
     cout << "  \u25A0  " << endl;
-    CursorP(56, 14);
+    CursorP(57, 14);
     cout << "  \u25A0  " << endl;
     Beep(261, 300);
     Sleep(1000);
 
     // GO! 추후 FIGHT로 변경
-    CursorP(49, 10);
+    CursorP(50, 10);
     cout << "\u25A0\u25A0\u25A0\u25A0  \u25A0\u25A0\u25A0\u25A0  \u25A0" << endl;
-    CursorP(49, 11);
+    CursorP(50, 11);
     cout << "\u25A0        \u25A0    \u25A0  \u25A0" << endl;
-    CursorP(49, 12);
+    CursorP(50, 12);
     cout << "\u25A0  \u25A0\u25A0  \u25A0    \u25A0  \u25A0" << endl;
-    CursorP(49, 13);
+    CursorP(50, 13);
     cout << "\u25A0    \u25A0  \u25A0    \u25A0" << endl;
-    CursorP(49, 14);
+    CursorP(50, 14);
     cout << "\u25A0\u25A0\u25A0\u25A0  \u25A0\u25A0\u25A0\u25A0  \u25A0" << endl;
     Beep(523, 300);
     Sleep(1000);
@@ -260,15 +588,16 @@ void GameSet::HpAndTimer()
 
     CursorP(58, 2); // 타이머 출력
     cout << "<";
-    if (timeleft >= 10)
+
+    if (timeleft >= 10 && timeleft < 100)
     {
         cout << timeleft;
     }
-    else if (timeleft < 10)
+    else if (timeleft < 10 && timeleft >= 1)
     {
         cout << " " << timeleft;
     }
-    else if (timeleft <= 0)
+    else
     {
         cout << " 0";
     }
@@ -486,62 +815,6 @@ void GameSet::PlayerPrint() //22줄
         cout << "            -;,..;;.                        ,-:;;  " << endl;
         break;
     case 7: // 쓰러짐 상태
-        
-        // 쓰러짐 그래픽 1
-
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                     ~`````~;                      " << endl;
-        cout << "                    @       @                      " << endl;
-        cout << "              ;;```;@;     ;@!;;~~,,               " << endl;
-        cout << "             ;;    @@;:;;;;;@@:     ;,             " << endl;
-        cout << "            `;&   .@@@;~;;;#@@#     ;;             " << endl;
-        cout << "             ;; U  @@@@@@@@@@|   u;;               " << endl;
-        cout << "              !+   ,@@@@@@@@#    ;;                " << endl;
-        cout << "               !   ;@@@@@@@@)  U ;                 " << endl;
-        cout << "              .;   ;;.     .-;   :;                " << endl;
-        cout << "            ,;:.    ;;;;;, ; ;   ;#;               " << endl;
-        cout << "          ;=.  !;    ;;,   -;    .,;;: :~          " << endl;
-        cout << "          $    ,$ -~           ;:;:   u  ;;.       " << endl;
-        cout << "           ,$    $               ``` :,,,  `,      " << endl;
-        cout << "              ;;  $                      ;!  -,    " << endl;
-        cout << "               .;-:!                       ;   ~;  " << endl;
-        cout << "           -$;;; . #                       ,!   ~~ " << endl;
-        cout << "            -;,..;;.                        ,-:;;  " << endl;
-
-        Sleep(1000);
-
-        // 쓰러짐 그래픽 2
-
-        CursorP(1, 12); // 덮어쓰기
-
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                                                   " << endl;
-        cout << "                ,, ,#@$;@@@@@&=;,,,                " << endl;
-        cout << "             ,,;;. @#````  `#!@    ;;..            " << endl;
-        cout << "          ,;;.    `@!       ;#@ ` ,,,;;  ``;, ..;  " << endl;
-        cout << "         (  :^`)&   @!;;;;;;;@@  (@ !  #  ~    ; ~ " << endl;
-        cout << "         `;;;#,; , ;@@!;;;/ @@;;;;$,,,/;,,;#;;'@;; " << endl;
-
-        Sleep(2000);
 
         break;
     }
@@ -629,7 +902,7 @@ void GameSet::EnemyPrint()
 "         ,=;;;;;;;;;;                         "
     };
 
-    string enemyAttackAscii[enemyPrintHigh] = { // R_ATTACK
+    string enemyAttackAscii[enemyPrintHigh] = { // ATTACK
 "                                                                  ",
 "                                                                  ",
 "                      ..                                          ",
@@ -704,56 +977,6 @@ void GameSet::EnemyPrint()
 "         ,=;;;;;;;;;;                         "
     };
 
-    string enemyKO1Ascii[enemyPrintHigh] = { // KO1
-"                                              ",
-"                                              ",
-"                                              ",
-"                                              ",
-"                                              ",
-"                ..                            ",
-"               ``;;;;;*~                      ",
-"                ;    ;;;@                     ",
-"               ;;  / ]:;;                     ",
-"                = ;;;;,/  ``*,                ",
-"              ;!;;;*;    -:  =,               ",
-"             /.      $     ;  @               ",
-"            ;;    / ,@     ,  ;               ",
-"           :     ~;;~     ,  @                ",
-"           # ;  ;*!       :  @                ",
-"          ;.   *~         ; ;                 ",
-"          [ `  ;@=@@@@@@@@@@@                 ",
-"          ;` :@@@@@@@@@@@@@@@@                ",
-"           .@;;#@@@@@@@@@@@@@;                ",
-"           ;;      *@!!$;.   ;;               ",
-"          #;;              ``$` ;@; ;;        ",
-"           #;;;;`;###;;;;;;,;,,,&,, # ~~      "
-    };
-
-    string enemyKO2Ascii[enemyPrintHigh] = { // KO2
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-"                                                                  ",
-" ..         ,,;;;;;;;;;;,,;,@@@#,                                 ",
-"``;;;;;*~``` , ,,,,;;;,,,  @@@@@@;;#@@;,  ;                       ",
-" ;    ;;;@ ;#  ^$  ~~    ;;@;;      *@!!$;@@. ;;                  ",
-";;  / ]:;;  ;/ '       .     ;&             ``$` ;@; ;;           ",
-" = ;;;;,/#####;;,,,;;;;,,,, #;;;;`;###;;;;;;,;,,,&,, # ~~         "
-    };
-
 #pragma endregion
 
     CursorP(74, 12);
@@ -812,21 +1035,6 @@ void GameSet::EnemyPrint()
         break;
 
     case 7: // 쓰러짐 상태
-        for (int i = 0; i < enemyPrintHigh; i++)
-        {
-            CursorP(74, 12 + i);
-            cout << enemyKO1Ascii[i];
-        }
-
-        Sleep(1000);
-
-        for (int i = 0; i < enemyPrintHigh; i++)
-        {
-            CursorP(54, 12 + i);
-            cout << enemyKO2Ascii[i];
-        }
-
-        Sleep(2000);
 
         break;
     }
