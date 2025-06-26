@@ -112,8 +112,11 @@ void GameSet::RunGame() // 게임 메인 루프
         Sleep(30); // 루프 속도 제한. 화면 깜빡임 보완용 짧은 지연
     }
 
+    // 공격 모션 수동으로 넣기
+    RenderGame(); // 마지막 장면 출력
+
     ResultGame();
-}
+} 
 
 void GameSet::ResultGame() // 게임 결과값
 {
