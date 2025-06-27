@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "Enemy.h"
 
+#define SPACE 32
+
 using namespace std;
 
 class GameSet : public Setting
@@ -10,7 +12,7 @@ class GameSet : public Setting
 private:
 	bool isGameRunning = true; // 게임이 시작되었는가?
 	bool isBattleStart = false; // 배틀이 시작되었는가?
-	const DWORD TIMER = 8000; // 80초 타이머
+	const DWORD TIMER = 80000; // 80초 타이머
 	DWORD gameStartTime = 0; // 타이머용 게임 시작 시간
 	int timeleft = 0; // 타이머 남은 시간
 	int Result = 0; // 결과값 저장
@@ -34,6 +36,9 @@ public :
 	void ResultGame(); // 게임 결과 평가
 
 	// 출력 처리용 함수 모음
+
+	void HowToPlayScreen(); // 게임 실행 전, 설명
+
 	void BeforeRunGame(); // RunGame 이전에 3초 카운트다운
 	void ResetCursor(); // 매 루프마다 커서 리셋, 기존 그래픽 지우기 함수
 	void HpAndTimer(); // 화면 상단에 각 멤버의 HP 바, 강공격 바, 타이머 출력

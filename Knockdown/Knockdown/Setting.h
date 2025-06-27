@@ -16,6 +16,7 @@ public:
 	void InitialSetup(); // 초기설정
 	void CursorP(int x, int y); // 메인화면 커서 위치 이동
 	void CursorH(); // 커서 숨기기
+	void CursorV(); // 커서 보이기
 
 };
 

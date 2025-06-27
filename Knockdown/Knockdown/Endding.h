@@ -20,5 +20,6 @@ public:
 	참조(&)형 타입은 반드시 멤버 초기화 리스트를 사용하여야 함. 생성자 내부에서 수행 X!
 	*/
 
-	void printEndding();
+	void printEndding(); // 엔딩 출력
+	void EndInputKey(); // 엔딩에서 키 입력
 }; 

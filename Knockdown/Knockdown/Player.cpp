@@ -80,13 +80,13 @@ void Player::CheckRA()
 {
     if (repeatAttack >= 1) // 연속 공격 상태일 때
     {
-        if (GetTickCount64() - AttackTime >= 2000) // 공격을 안 한지 2초가 지났는가?
+        if (GetTickCount64() - AttackTime >= 2500) // 공격을 안 한지 2.5초가 지났는가?
         {
             repeatAttack = 0; // 연속 공격 상태 해제
         }
     }
 
-    if (repeatAttack >= 4) // 4회 이상 연속 공격 상태일 때
+    if (repeatAttack >= 3) // 3회 이상 연속 공격 상태일 때
     {
         Tired();
     }

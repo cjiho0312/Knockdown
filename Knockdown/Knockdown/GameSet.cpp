@@ -90,6 +90,8 @@ void GameSet::RenderGame() // 게임 화면 표시
 
 void GameSet::RunGame() // 게임 메인 루프
 {
+    system("cls");
+
     RenderGame();
 
     BeforeRunGame();
@@ -477,6 +479,69 @@ void GameSet::ResultGame() // 게임 결과값
 // 아래는 출력 관련 조각 함수들
 
 
+
+void GameSet::HowToPlayScreen()
+{
+    system("cls");
+
+    CursorP(0, 0);
+                                                    
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                  #  # #### # # #    #### ####    ###  #     ##  #  #                               " << endl;
+    cout << "                                  #### #  # # # #      #  #  #    #### #    ####  ###                               " << endl;
+    cout << "                                  #  # ####  # #       #  ####    #    #### #  #   #                                " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                   ATTACK : Press [Z]                                               " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                       Knock down your opponent within 80 seconds!                                  " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                    DODGE : Press [X]                                               " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                           TIMING is key. Watch your opponent’s movements and dodge carefully!                      " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                               SPECIAL ATTACK : Press [A]                                           " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                             Successfully dodge 3 times to unleash a powerful SPECIAL attack.                       " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                          <TIP>                                                     " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                       Don’t rush!                                                  " << endl;
+    cout << "                              Spamming actions causes fatigue and resets your SPECIAL gauge.                        " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                      KNOCK DOWN YOUR OPPONENT AND EARN YOUR HONOR!                                 " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                                                                                    " << endl;
+    cout << "                                                    Press SPACE BAR...                                              " << endl;
+
+
+
+
+    int CursorInput; // 입력 변수
+    bool EnddingCursor = 1; // 스패이스바 누르기 전까지 대기하는 변수
+
+
+    while (EnddingCursor == 1)
+    {
+        CursorInput = _getch();
+
+        if (CursorInput == SPACE) // SPACE 입력
+        {
+                EnddingCursor = 0;
+        }
+    }
+
+
+
+}
 
 void GameSet::BeforeRunGame()
 {
@@ -1073,7 +1138,7 @@ void GameSet::GameText()
     CursorP(35, 7); // 보조 text 칸 지우기
     if (player.RepeatAttack() <= 1)
     {
-        cout << "                                                                   ";
+        cout << "                                                                     ";
     }
 
 
@@ -1124,18 +1189,18 @@ void GameSet::GameText()
 
     if (player.GetPlayerState() == 2) // 공격 상태일 때
     {
-        CursorP(37, 7);
+        CursorP(43, 7);
         if (player.RepeatAttack() >= 2)
         {
-            cout << "주의 : 연속 공격은 공격 명중률을 하락시킵니다!";
+            cout << "Repeated attacks lower accuracy!";
         }
     }
 
     if (player.GetPlayerState() == 6) // 지침 상태일 때
     {
-        CursorP(35, 7);
+        CursorP(38, 7);
         
-            cout << "주의 : 빠른 연속 공격, 회피는 몸을 지치게 만듭니다!";
+            cout << "Spamming attacks or dodges causes fatigue!";
         
     }
 

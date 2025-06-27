@@ -34,11 +34,9 @@ protected:
 		KO // 쓰러짐 상태, 7
 	} STATE;
 
-	STATE _state;
-
 public:
 
-	Member() : hp(20), isAlive(true) {} // 멤버 초기화 리스트 사용, HP는 20, isAlive true로 초기화.
+	Member() : hp(20), isAlive(true), damage(0){} // 멤버 초기화 리스트 사용, HP는 20, isAlive true로 초기화.
 	virtual ~Member() {} // 소멸자
 
 	int GetHP() const { return hp; }

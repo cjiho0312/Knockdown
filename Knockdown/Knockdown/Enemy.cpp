@@ -60,17 +60,17 @@ void Enemy::Attack(Member& player)
 
 	int randValue = rand() % 100; // 0~99
 
-	if (randValue < 50) // 50% È®·ü·Î 1 µ¥¹ÌÁö
+	if (randValue < 40) // 40% È®·ü·Î 1 µ¥¹ÌÁö
 	{
 		dam = 1;
 	}
-	else if (randValue < 90) // 40% È®·ü·Î 2 µ¥¹ÌÁö
+	else if (randValue < 80) // 40% È®·ü·Î 2 µ¥¹ÌÁö
 	{
 		dam = 2;
 	}
-	else // 10% È®·ü·Î 0 µ¥¹ÌÁö
+	else // 20% È®·ü·Î 3 µ¥¹ÌÁö
 	{
-		dam = 0;
+		dam = 3;
 	}
 
 	player.TakeDamage(dam, *this);
