@@ -31,7 +31,7 @@ void Enemy::TryAttack(Member& player) // 원본값 받아오기 위해 참조
 {
 	if (!isPreparingAttack) return;
 
-	if (isPreparingAttack && GetTickCount64() - attackStartTime >= 700) // isPreparingAttack이 true이고, 0.7초가 지났는가?
+	if (isPreparingAttack && GetTickCount64() - attackStartTime >= 400) // isPreparingAttack이 true이고, 0.4초가 지났는가?
 	{
 		if (player.IsDodgig()) // 플레이어의 회피 성공
 		{
@@ -60,15 +60,15 @@ void Enemy::Attack(Member& player)
 
 	int randValue = rand() % 100; // 0~99
 
-	if (randValue < 40) // 40% 확률로 1 데미지
+	if (randValue < 20) // 20% 확률로 1 데미지
 	{
 		dam = 1;
 	}
-	else if (randValue < 80) // 40% 확률로 2 데미지
+	else if (randValue < 70) // 50% 확률로 2 데미지
 	{
 		dam = 2;
 	}
-	else // 20% 확률로 3 데미지
+	else // 30% 확률로 3 데미지
 	{
 		dam = 3;
 	}

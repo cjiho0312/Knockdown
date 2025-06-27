@@ -3,7 +3,6 @@ using namespace std;
 
 void Setting::InitialSetup() // 초기 설정
 {
-    SetConsoleScreenBufferSize(hConsole, {120,40}); // 버퍼 크기 수정
     system("mode con: cols=120 lines=40"); // 콘솔창 크기 조절
     system("title KNOCKDOWN"); // 콘솔창 이름 설정
 }

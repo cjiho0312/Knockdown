@@ -23,7 +23,7 @@ void Player::PrepareAttack()
 
 void Player::TryAttack(Member& enemy)
 {
-    if (isPreparingAttack && GetTickCount64() - attackStartTime >= 700) // isPreparingAttack이 true이고, 0.7초가 지났는가?
+    if (isPreparingAttack && GetTickCount64() - attackStartTime >= 400) // isPreparingAttack이 true이고, 0.4초가 지났는가?
     {
         Attack(enemy); // 실제 공격 실행
         isPreparingAttack = false; // 상태 초기화
@@ -80,7 +80,7 @@ void Player::CheckRA()
 {
     if (repeatAttack >= 1) // 연속 공격 상태일 때
     {
-        if (GetTickCount64() - AttackTime >= 2500) // 공격을 안 한지 2.5초가 지났는가?
+        if (GetTickCount64() - AttackTime >= 2000) // 공격을 안 한지 2초가 지났는가?
         {
             repeatAttack = 0; // 연속 공격 상태 해제
         }
@@ -118,7 +118,7 @@ void Player::Dodge()
 
 void Player::EndDodge()
 {
-    if (isDodging && GetTickCount64() - dodgeStartTime >= 400) // isDodging이 true이고, 0.4초가 지났는가?
+    if (isDodging && GetTickCount64() - dodgeStartTime >= 230) // isDodging이 true이고, 0.23초가 지났는가?
     {
         isDodging = false;
         repeatDodge += 1; // 회피반복 카운트 증가
