@@ -636,7 +636,7 @@ void GameSet::HpAndTimer()
     CursorP(50, 2);
     cout << "]";
 
-    CursorP(7, 4); // 플레이어 (강공격) 스테미너 \u25CF, \u25CB
+    CursorP(7, 4); // 플레이어 (강공격) 스테미너
     cout << "SPECIAL [\u25CB\u25CB\u25CB";
     CursorP(16, 4);
     for (int i = 0; i < player.DodgeCount(); i++)
@@ -646,16 +646,12 @@ void GameSet::HpAndTimer()
     CursorP(22, 4);
     cout << "]";
     
-
     CursorP(69, 2); // 적 HP
     cout << "[                                                                                     ";
     CursorP(70, 2);
     HpBarMaker(enemy.GetHP());
     CursorP(110, 2);
     cout << "] ENEMY";
-
-    // CursorP(2, 30);
-    // cout << "-------------------------------------------------------------------------------------------------------------------";
 
     CursorP(58, 2); // 타이머 출력
     cout << "<";

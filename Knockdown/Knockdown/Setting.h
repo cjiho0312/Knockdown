@@ -1,9 +1,8 @@
 #pragma once
 #include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <string>
-#include <cstdlib>
+#include <windows.h> // sistem 함수 사용
+#include <conio.h> // getch 등 입출력 함수 사용
+#include <cstdlib> // 난수 생성
 
 
 class Setting

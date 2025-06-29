@@ -36,8 +36,6 @@ void Enemy::TryAttack(Member& player) // 원본값 받아오기 위해 참조
 		if (player.IsDodgig()) // 플레이어의 회피 성공
 		{
 			if (player.DodgeCount() < 3) { player.IncreaseDodge(); } // dodgecount가 3보다 작을 때만 회피 횟수 증가
-
-
 		}
 		else
 		{
@@ -46,7 +44,7 @@ void Enemy::TryAttack(Member& player) // 원본값 받아오기 위해 참조
 		
 		isPreparingAttack = false; // 상태 초기화
 		lastAttackTime = GetTickCount64(); // 마지막 공격 시간에 현재 시간 저장
-		nextAttackDelay = (rand() % 2001) + 1000; // 1 ~ 3초가량 공격 딜레이를 줌
+		nextAttackDelay = (rand() % 1501) + 1200; // 1.2 ~ 2.5초가량 공격 딜레이를 줌
 
 		ENEMY = ATTACK; // 공격 동작
 		StateTime = GetTickCount64();
