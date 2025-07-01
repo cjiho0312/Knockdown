@@ -12,7 +12,7 @@ class GameSet : public Setting
 private:
 	bool isGameRunning = true; // 게임이 시작되었는가?
 	bool isBattleStart = false; // 배틀이 시작되었는가?
-	const DWORD TIMER = 80000; // 80초 타이머
+	const DWORD TIMER = 60000; // 60초 타이머
 	DWORD gameStartTime = 0; // 타이머용 게임 시작 시간
 	int timeleft = 0; // 타이머 남은 시간
 	int Result = 0; // 결과값 저장

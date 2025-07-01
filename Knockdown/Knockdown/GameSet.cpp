@@ -36,7 +36,6 @@ void GameSet::InputKey() // 키 입력 처리
             }
         }
     }
-
 }
 
 void GameSet::UpdateGame() // 게임 업데이트
@@ -546,7 +545,7 @@ void GameSet::HowToPlayScreen()
 void GameSet::BeforeRunGame()
 {
     CursorP(58, 2);
-    cout << "<80>";
+    cout << "<60>";
 
     // 3
     CursorP(57, 10);

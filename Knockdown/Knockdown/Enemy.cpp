@@ -84,8 +84,8 @@ void Enemy::CheckECA()
 
 void Enemy::TakeDamage(int dmg, const Member & Attacker)
 {
-		isPreparingAttack = false; // 공격 준비 상태 중 데미지를 입었을 때, 공격 준비 취소
-		lastAttackTime = GetTickCount64() - 900; // 적정시간 후 다시 공격 준비하도록 설정
+	isPreparingAttack = false; // 공격 준비 상태 중 데미지를 입었을 때, 공격 준비 취소
+	lastAttackTime = GetTickCount64() - 900; // 적정시간 후 다시 공격 준비하도록 설정
 	
 	repeatAttack = Attacker.RepeatAttack(); // player의 연속공격횟수 불러오기
 
